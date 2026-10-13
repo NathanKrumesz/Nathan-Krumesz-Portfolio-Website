@@ -1,0 +1,303 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-bg: #FFFFFF;
+    --color-bg-subtle: #F7F7F6;
+    --color-bg-muted: #EFEFEE;
+    --color-ink: #0A0A0A;
+    --color-ink-soft: #4A4A4A;
+    --color-ink-faint: #8A8A8A;
+    --color-dark: #111114;
+    --color-dark-deep: #050507;
+    --color-on-dark: #FFFFFF;
+    --color-on-dark-soft: rgba(255, 255, 255, 0.65);
+    --color-line: rgba(0, 0, 0, 0.08);
+    --color-line-dark: rgba(255, 255, 255, 0.10);
+
+    /* Moss field gradient tokens */
+    --grad-forest: #1F3B14;
+    --grad-olive: #6B7A1E;
+    --grad-amber: #D9A441;
+    --grad-sky: #8FB7D9;
+    --grad-mist: #C9D6E3;
+    --grad-night: #0C2A2E;
+
+    /* Signal alternate tokens */
+    --grad-violet: #6D28FF;
+    --grad-magenta: #C026D3;
+    --grad-ember: #FF5A36;
+    --grad-ink: #0B0B14;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--color-ink);
+    background-color: var(--color-bg);
+  }
+}
+
+.font-serif {
+  font-family: 'Instrument Serif', Georgia, serif;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* Layered blurred color blobs from design.md */
+.hero__gradient {
+  position: absolute;
+  inset: -15%;
+  background:
+    radial-gradient(46% 54% at 16% 22%, #183611 0%, transparent 70%),
+    radial-gradient(42% 48% at 84% 18%, #dda239 0%, transparent 68%),
+    radial-gradient(50% 52% at 86% 52%, #84add1 0%, transparent 70%),
+    radial-gradient(44% 54% at 18% 80%, #bed0df 0%, transparent 72%),
+    radial-gradient(58% 58% at 72% 86%, #092428 0%, transparent 70%),
+    #5f721c;
+  filter: blur(48px) saturate(1.22);
+  animation: drift 36s ease-in-out infinite alternate;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* CTA Organic Blurred Gradient (Matching Hero section) */
+.cta__gradient {
+  position: absolute;
+  inset: -15%;
+  background:
+    radial-gradient(48% 55% at 18% 22%, #183611 0%, transparent 70%),
+    radial-gradient(44% 52% at 82% 20%, #dda239 0%, transparent 68%),
+    radial-gradient(52% 52% at 86% 82%, #092428 0%, transparent 66%),
+    radial-gradient(46% 52% at 20% 76%, #5f721c 0%, transparent 70%),
+    radial-gradient(52% 52% at 50% 50%, #0d2822 0%, transparent 75%),
+    #0c2125;
+  filter: blur(52px) saturate(1.22);
+  animation: drift 40s ease-in-out infinite alternate;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Optical Vignette Layer (LearnMoss Studio Depth & Rim Shading) */
+.hero__vignette,
+.cta__vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse at 50% 50%, transparent 38%, rgba(0, 0, 0, 0.44) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.22) 0%, transparent 26%, transparent 72%, rgba(0, 0, 0, 0.38) 100%);
+  pointer-events: none;
+}
+
+/* Primary High-Contrast Silver-Halide Tactile Film Grain (LearnMoss Reference Style) */
+.hero__grain {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0.52;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='filmGrain'><feTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/><feColorMatrix type='matrix' values='3.2 0 0 0 -1.1  0 3.2 0 0 -1.1  0 0 3.2 0 -1.1  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23filmGrain)'/></svg>");
+  background-size: 180px 180px;
+  pointer-events: none;
+}
+
+/* Secondary Micro-Stipple Speckle Layer (Deep analog particulate texture) */
+.hero__grain-stipple {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0.16;
+  mix-blend-mode: hard-light;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='stipple'><feTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='matrix' values='2.5 0 0 0 -0.75  0 2.5 0 0 -0.75  0 0 2.5 0 -0.75  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23stipple)'/></svg>");
+  background-size: 140px 140px;
+  pointer-events: none;
+}
+
+.grain-subtle {
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='filmGrainSubtle'><feTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='matrix' values='2.2 0 0 0 -0.6  0 2.2 0 0 -0.6  0 0 2.2 0 -0.6  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23filmGrainSubtle)'/></svg>");
+  background-size: 180px 180px;
+  pointer-events: none;
+}
+
+@keyframes drift {
+  from {
+    transform: translate3d(-3%, -2%, 0) scale(1.02);
+  }
+  to {
+    transform: translate3d(3%, 2%, 0) scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__gradient,
+  .cta__gradient {
+    animation: none;
+  }
+}
+
+/* Subtle dot-grid background for light and dark chapters */
+.section--grid {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.section--grid-dark {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Glassmorphism teaser card */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.glass-panel-dark {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Hide scrollbar for clean carousels */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Scroll-triggered fade-in animations from design.md */
+.reveal-fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1), transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-fade-up.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-fade-up {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Doe Media Case Study Parallax & Tilt Styles */
+.doe-card-portfolio-image-left,
+.doe-card-portfolio-image-right {
+  will-change: transform;
+  transition: transform 0.12s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+@media (max-width: 767px) {
+  .doe-portfolio-chapter .doe-card-portfolio-image-left {
+    transform: translateX(-15px) rotate(-1.5deg);
+  }
+  .doe-portfolio-chapter .doe-card-portfolio-image-right {
+    transform: translateX(15px) rotate(1.5deg);
+  }
+  .doe-portfolio-chapter.passed .doe-card-portfolio-image-left {
+    transform: translateX(-30px) rotate(-3deg);
+  }
+  .doe-portfolio-chapter.passed .doe-card-portfolio-image-right {
+    transform: translateX(30px) rotate(3deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .doe-card-portfolio-image-left,
+  .doe-card-portfolio-image-right {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Continuous Logo Marquee Ribbons */
+@keyframes marquee-left {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes marquee-right {
+  0% { transform: translate3d(-50%, 0, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 32s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: marquee-right 36s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-left:hover,
+.animate-marquee-right:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-left,
+  .animate-marquee-right {
+    animation: none !important;
+  }
+}
+
+/* Global Print / Save as PDF Styles */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  header,
+  footer,
+  nav,
+  #hero,
+  #brands,
+  #services,
+  #case-studies,
+  #portfolio-vault,
+  #about,
+  #contact,
+  .fixed,
+  .grain-subtle,
+  .cta__gradient,
+  .hero__gradient,
+  .hero__grain,
+  .hero__grain-stipple {
+    display: none !important;
+  }
+  #resume-printable-content {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    max-height: none !important;
+    color: #111114 !important;
+    background: #ffffff !important;
+  }
+}
