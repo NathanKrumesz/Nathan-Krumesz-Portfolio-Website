@@ -1,6 +1,6 @@
 import React from 'react';
 import { PERSONAL_INFO } from '../data/portfolioData';
-import { MapPin, Mail, Phone, GraduationCap, Award, FileText, CheckCircle2, ArrowUpRight, Linkedin } from 'lucide-react';
+import { MapPin, Mail, Phone, GraduationCap, Award, FileText, CheckCircle2, ArrowUpRight, Linkedin, Headphones } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
 
 interface AboutSectionProps {
@@ -18,7 +18,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenResume, onOpen
             <ScrollReveal className="sticky top-28">
               <div className="relative rounded-3xl overflow-hidden border border-black/10 shadow-lg bg-black aspect-square max-w-md mx-auto lg:max-w-none">
                 <img
-                  src="/src/assets/images/portrait.jpg"
+                  src="/src/assets/images/nathan-black-hoodie.png"
                   alt="Nathan Krumesz"
                   className="w-full h-full object-cover object-top"
                 />
@@ -85,6 +85,81 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenResume, onOpen
                     {PERSONAL_INFO.linkedinHandle}
                   </a>
                 </div>
+                <div className="flex items-center gap-2.5 text-black/75">
+                  <Headphones className="w-4 h-4 text-emerald-600" />
+                  <a
+                    href={PERSONAL_INFO.spotifyPodcast.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline font-mono"
+                  >
+                    Spotify: SaaS Growth Secrets
+                  </a>
+                </div>
+              </div>
+
+              {/* Spotify Podcast Feature Card */}
+              <div className="mt-5 rounded-2xl p-5 bg-gradient-to-br from-[#0c1a12] via-[#08120c] to-[#040806] border border-emerald-500/25 text-white shadow-lg relative overflow-hidden group">
+                {/* Emerald ambient blur */}
+                <div className="absolute -top-10 -right-10 w-28 h-28 rounded-full bg-emerald-500/20 blur-xl pointer-events-none group-hover:bg-emerald-500/30 transition-all duration-500" />
+                
+                <div className="relative z-10">
+                  {/* Eyebrow */}
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span className="inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider text-emerald-400 bg-emerald-950/80 px-2.5 py-0.5 rounded-full border border-emerald-500/30">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#1DB954] animate-pulse" />
+                      Spotify Podcast
+                    </span>
+                    <span className="text-[10px] font-mono text-emerald-300/80">
+                      70 Episodes
+                    </span>
+                  </div>
+
+                  {/* Artwork & Show Details */}
+                  <div className="flex items-center gap-3.5">
+                    <div className="relative w-14 h-14 rounded-xl overflow-hidden shrink-0 shadow-md border border-white/15 bg-black">
+                      <img
+                        src="/portfolio/podcast-cover.jpg"
+                        alt="SaaS Growth Secrets Podcast Cover"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+
+                    <div className="flex-1 min-w-0">
+                      <h4 className="text-sm font-semibold text-white tracking-tight leading-snug group-hover:text-emerald-300 transition-colors truncate">
+                        SaaS Growth Secrets
+                      </h4>
+                      <p className="text-[11px] text-white/60 mt-0.5 font-light truncate">
+                        Hosted by Nathan Krumesz
+                      </p>
+                      <div className="mt-1 flex items-center gap-1 text-[10px] text-emerald-400/90 font-mono">
+                        <span className="text-amber-400">★★★★★</span>
+                        <span className="text-white/40">•</span>
+                        <span>Funnel Hacking & CRO</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <p className="mt-3 text-[11px] text-white/70 font-light leading-relaxed line-clamp-2">
+                    Actionable marketing nuggets, 5-minute webinar scripts, and direct response strategies for scaling high-growth businesses.
+                  </p>
+
+                  {/* Listen on Spotify Button */}
+                  <a
+                    href="https://open.spotify.com/show/0uvYSFwog366kyHsrmFZ3D?si=cd69d48bf2d74df9"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3.5 w-full py-2 px-3.5 rounded-xl bg-[#1DB954] hover:bg-[#1ed760] text-black font-semibold text-xs flex items-center justify-between transition-all shadow-sm hover:scale-[1.01] cursor-pointer"
+                  >
+                    <span className="flex items-center gap-2">
+                      <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.503 17.306c-.215.352-.676.463-1.028.248-2.812-1.718-6.353-2.107-10.523-1.154-.403.092-.806-.157-.898-.56-.092-.403.157-.806.56-.898 4.567-1.043 8.487-.604 11.64 1.336.353.216.464.676.249 1.028zm1.469-3.267c-.27.44-.848.58-1.288.31-3.218-1.977-8.125-2.55-11.932-1.393-.497.151-1.024-.134-1.175-.63-.151-.497.134-1.024.63-1.176 4.354-1.321 9.774-.683 13.454 1.58.44.27.581.848.311 1.289zm.126-3.41c-3.859-2.29-10.224-2.502-13.896-1.387-.593.18-1.22-.162-1.4-.755-.18-.593.162-1.22.755-1.4 4.218-1.28 11.25-1.037 15.69 1.6c.532.316.707 1.007.391 1.54-.316.533-1.008.707-1.54.391z"/>
+                      </svg>
+                      <span>Listen on Spotify</span>
+                    </span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-black/70" />
+                  </a>
+                </div>
               </div>
             </ScrollReveal>
           </div>
@@ -119,7 +194,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenResume, onOpen
                   <span className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-black" />
                   <div className="flex items-baseline justify-between gap-2">
                     <h4 className="text-base font-semibold text-black">
-                      Administrative Assistant / CRM Transformation
+                      Administrative Assistant
                     </h4>
                     <span className="text-xs font-mono text-black/50 whitespace-nowrap">
                       Feb 2024 – Apr 2025

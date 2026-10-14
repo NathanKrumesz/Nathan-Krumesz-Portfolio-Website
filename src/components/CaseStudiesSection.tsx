@@ -55,7 +55,7 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ onSelect
                   : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white border border-white/10'
               }`}
             >
-              All 4 Studies
+              All {CASE_STUDIES.length} Studies
             </button>
             {CASE_STUDIES.map((study, idx) => (
               <button

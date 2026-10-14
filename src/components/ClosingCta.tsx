@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowUpRight, Copy, Check, Mail, Phone, MapPin, Sparkles, Send, Linkedin } from 'lucide-react';
+import { ArrowUpRight, Copy, Check, Mail, Phone, MapPin, Sparkles, Send, Linkedin, Headphones } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { ScrollReveal } from './ScrollReveal';
 
@@ -195,6 +195,15 @@ export const ClosingCta: React.FC<ClosingCtaProps> = ({ onOpenResume }) => {
               >
                 <Linkedin className="w-3.5 h-3.5 text-emerald-400" />
                 <span>{PERSONAL_INFO.linkedinHandle}</span>
+              </a>
+              <a
+                href={PERSONAL_INFO.spotifyPodcast.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-white/85 hover:text-[#1DB954] transition-colors"
+              >
+                <Headphones className="w-3.5 h-3.5 text-[#1DB954]" />
+                <span>Spotify Podcast</span>
               </a>
               <span className="flex items-center gap-1.5">
                 <MapPin className="w-3.5 h-3.5 text-emerald-400" />

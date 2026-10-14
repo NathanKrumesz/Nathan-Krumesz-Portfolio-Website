@@ -18,7 +18,6 @@ export const BrandsSection: React.FC<BrandsSectionProps> = ({ onSelectCaseStudy 
     mighti: 'mighti-mushrooms',
     kalaia: 'kalaia-skincare',
     petsmont: 'petsmont-funnels',
-    thummy: 'thummy-saas',
   };
 
   // Compute category counts dynamically
@@ -55,8 +54,9 @@ export const BrandsSection: React.FC<BrandsSectionProps> = ({ onSelectCaseStudy 
   }, [activeCategory, searchQuery]);
 
   // Split brands for the dual infinite marquee ribbons
-  const row1Brands = BRAND_PARTNERS.slice(0, 6);
-  const row2Brands = BRAND_PARTNERS.slice(6, 12);
+  const half = Math.ceil(BRAND_PARTNERS.length / 2);
+  const row1Brands = BRAND_PARTNERS.slice(0, half);
+  const row2Brands = BRAND_PARTNERS.slice(half);
 
   const handleLaunchCaseStudy = (brandId: string) => {
     const targetId = caseStudyMapping[brandId] || brandId;
@@ -83,7 +83,7 @@ export const BrandsSection: React.FC<BrandsSectionProps> = ({ onSelectCaseStudy 
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-xs font-mono text-black/60">
             <span className="flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-black/80 font-medium">12 Brand Partnerships</span>
+              <span className="text-black/80 font-medium">{BRAND_PARTNERS.length} Brand Partnerships</span>
             </span>
             <span>·</span>
             <span>$45M+ Aggregate Spend Managed</span>
@@ -106,11 +106,15 @@ export const BrandsSection: React.FC<BrandsSectionProps> = ({ onSelectCaseStudy 
               key={`row1-${i}`}
               className="bg-white rounded-2xl px-6 py-4 border border-black/8 shadow-2xs hover:shadow-md transition-all duration-300 flex items-center gap-4 sm:gap-6 shrink-0 group"
             >
-              <div className="h-8 flex items-center text-[#0A0A0A] group-hover:scale-105 transition-transform duration-300">
+              <div className="h-9 flex items-center text-[#0A0A0A] group-hover:scale-105 transition-transform duration-300">
                 <BrandLogo
                   logoType={brand.logoType}
                   name={brand.name}
-                  className="h-7 w-auto"
+                  className={
+                    ['kalaia', 'btaft', 'yardsale'].includes(brand.logoType)
+                      ? 'h-9 sm:h-10 w-auto'
+                      : 'h-7 w-auto'
+                  }
                 />
               </div>
               <div className="h-6 w-px bg-black/10" />
@@ -133,11 +137,15 @@ export const BrandsSection: React.FC<BrandsSectionProps> = ({ onSelectCaseStudy 
               key={`row2-${i}`}
               className="bg-white rounded-2xl px-6 py-4 border border-black/8 shadow-2xs hover:shadow-md transition-all duration-300 flex items-center gap-4 sm:gap-6 shrink-0 group"
             >
-              <div className="h-8 flex items-center text-[#0A0A0A] group-hover:scale-105 transition-transform duration-300">
+              <div className="h-9 flex items-center text-[#0A0A0A] group-hover:scale-105 transition-transform duration-300">
                 <BrandLogo
                   logoType={brand.logoType}
                   name={brand.name}
-                  className="h-7 w-auto"
+                  className={
+                    ['kalaia', 'btaft', 'yardsale'].includes(brand.logoType)
+                      ? 'h-9 sm:h-10 w-auto'
+                      : 'h-7 w-auto'
+                  }
                 />
               </div>
               <div className="h-6 w-px bg-black/10" />
@@ -167,7 +175,7 @@ export const BrandsSection: React.FC<BrandsSectionProps> = ({ onSelectCaseStudy 
                 The Portfolio Index & <span className="font-serif italic font-normal text-black">Sector Directory.</span>
               </h3>
               <p className="mt-2 text-sm text-black/60 font-light max-w-2xl leading-relaxed">
-                An authenticated record of 12 commercial brand partnerships spanning direct-to-consumer e-commerce, proprietary SaaS engines, and enterprise wealth advisory.
+                An authenticated record of {BRAND_PARTNERS.length} commercial brand partnerships and projects spanning direct-to-consumer e-commerce, proprietary SaaS engines, and enterprise wealth advisory.
               </p>
             </div>
 
@@ -175,7 +183,7 @@ export const BrandsSection: React.FC<BrandsSectionProps> = ({ onSelectCaseStudy 
             <div className="flex items-center gap-5 text-xs font-mono text-black/55 shrink-0">
               <div className="text-left sm:text-right">
                 <span className="block text-base sm:text-lg font-semibold text-black tracking-tight">4 Sectors</span>
-                <span className="text-[11px] text-black/40">12 Verified Partners</span>
+                <span className="text-[11px] text-black/40">{BRAND_PARTNERS.length} Verified Partners</span>
               </div>
               <div className="h-8 w-px bg-black/10" />
               <div className="text-left sm:text-right">
@@ -276,7 +284,7 @@ export const BrandsSection: React.FC<BrandsSectionProps> = ({ onSelectCaseStudy 
           <div className="mb-6 flex items-center justify-between text-xs font-mono text-black/60 bg-black/[0.03] px-4 py-2.5 rounded-xl border border-black/5">
             <div className="flex flex-wrap items-center gap-2">
               <span>
-                Displaying <strong>{filteredBrands.length}</strong> of 12 partner records
+                Displaying <strong>{filteredBrands.length}</strong> of {BRAND_PARTNERS.length} partner records
               </span>
               {activeCategory !== 'all' && (
                 <>
@@ -345,11 +353,15 @@ export const BrandsSection: React.FC<BrandsSectionProps> = ({ onSelectCaseStudy 
                     </div>
 
                     {/* Brand Logo Presentation */}
-                    <div className="h-12 flex items-center justify-start mb-4 text-[#0A0A0A] group-hover:scale-[1.02] transition-transform duration-200">
+                    <div className="h-14 flex items-center justify-start mb-4 text-[#0A0A0A] group-hover:scale-[1.02] transition-transform duration-200">
                       <BrandLogo
                         logoType={brand.logoType}
                         name={brand.name}
-                        className="h-7 w-auto"
+                        className={
+                          ['kalaia', 'btaft', 'yardsale'].includes(brand.logoType)
+                            ? 'h-11 sm:h-12 w-auto'
+                            : 'h-8 sm:h-9 w-auto'
+                        }
                       />
                     </div>
 
@@ -444,11 +456,15 @@ export const BrandsSection: React.FC<BrandsSectionProps> = ({ onSelectCaseStudy 
                         {/* Brand Info & Logo */}
                         <td className="py-4 px-4">
                           <div className="flex items-center gap-3">
-                            <div className="w-20 sm:w-24 shrink-0 text-[#0A0A0A]">
+                            <div className="w-24 sm:w-28 shrink-0 text-[#0A0A0A]">
                               <BrandLogo
                                 logoType={brand.logoType}
                                 name={brand.name}
-                                className="h-6 w-auto"
+                                className={
+                                  ['kalaia', 'btaft', 'yardsale'].includes(brand.logoType)
+                                    ? 'h-9 sm:h-10 w-auto'
+                                    : 'h-6 sm:h-7 w-auto'
+                                }
                               />
                             </div>
                             <div>

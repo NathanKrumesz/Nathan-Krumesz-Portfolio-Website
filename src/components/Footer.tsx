@@ -47,6 +47,15 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume, onOpenContact }) =
             <Linkedin className="w-3.5 h-3.5" />
             <span>LinkedIn</span>
           </a>
+          <a
+            href={PERSONAL_INFO.spotifyPodcast.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-emerald-400 transition-colors inline-flex items-center gap-1.5"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1DB954]" />
+            <span>Spotify Podcast</span>
+          </a>
           <button onClick={onOpenContact} className="hover:text-white transition-colors cursor-pointer">
             Contact
           </button>

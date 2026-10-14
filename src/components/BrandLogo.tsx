@@ -1,4 +1,15 @@
 import React from 'react';
+import mightiLogo from '../assets/images/logos/Mighti logo.svg';
+import petsmontLogo from '../assets/images/logos/Petsmont-Logo.svg';
+import halalMealsLogo from '../assets/images/logos/halal-meals.png';
+import kalaiaLogo from '../assets/images/logos/kalaia-logo.webp';
+import btaftLogo from '../assets/images/logos/btaft.png';
+import yuregenLogo from '../assets/images/logos/yuregen.png';
+import ccanLogo from '../assets/images/logos/ccan canadian community alliance network.png';
+import lasenbyLogo from '../assets/images/logos/lasenby realty.png';
+import torontoDanceLogo from '../assets/images/logos/toronto dance.png';
+import yardSaleLogo from '../assets/images/logos/yard sale.png';
+import rbcLogo from '../assets/images/logos/rbc.svg';
 
 interface BrandLogoProps {
   logoType: string;
@@ -25,39 +36,129 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
     );
   }
 
-  // Placeholder SVG vector wordmarks with high-contrast, editorial agency finish
   switch (logoType) {
     case 'mighti':
       return (
-        <div className={`flex items-center gap-2 select-none ${className}`}>
-          <svg className="w-6 h-6 text-current flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M12 2a7 7 0 0 0-7 7c0 4.5 4 8 7 13 3-5 7-8.5 7-13a7 7 0 0 0-7-7z" fill="currentColor" fillOpacity="0.15" />
-            <circle cx="12" cy="9" r="2.5" fill="currentColor" />
-          </svg>
-          <span className="font-sans font-bold tracking-[0.2em] text-sm uppercase">MIGHTI</span>
-        </div>
+        <img
+          src={mightiLogo}
+          alt="Mighti"
+          className={`${className} object-contain max-h-8`}
+          loading="lazy"
+        />
       );
 
     case 'kalaia':
       return (
-        <div className={`flex items-center gap-2 select-none ${className}`}>
-          <svg className="w-6 h-6 text-current flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-            <circle cx="12" cy="12" r="9" strokeOpacity="0.4" />
-            <path d="M12 6c-2.5 3-4 6-4 8a4 4 0 0 0 8 0c0-2-1.5-5-4-8z" fill="currentColor" fillOpacity="0.2" />
-          </svg>
-          <span className="font-serif italic font-medium tracking-[0.18em] text-base uppercase">Kalaia</span>
+        <div className={`flex items-center gap-2.5 select-none ${className}`}>
+          <img
+            src={kalaiaLogo}
+            alt="Kalaia Skincare"
+            className="h-8 w-8 sm:h-9 sm:w-9 object-contain shrink-0"
+            loading="lazy"
+          />
+          <span className="font-serif tracking-[0.22em] text-sm sm:text-[15px] uppercase font-semibold text-black/90">
+            KALAIA
+          </span>
         </div>
       );
 
     case 'petsmont':
       return (
+        <img
+          src={petsmontLogo}
+          alt="Petsmont"
+          className={`${className} object-contain max-h-8`}
+          loading="lazy"
+        />
+      );
+
+    case 'halalmeals':
+      return (
+        <img
+          src={halalMealsLogo}
+          alt="Halal Meals"
+          className={`${className} object-contain max-h-8`}
+          loading="lazy"
+        />
+      );
+
+    case 'btaft':
+      return (
+        <img
+          src={btaftLogo}
+          alt="Brandon Taft Fitness & Nutrition"
+          className={`${className} object-contain max-h-14`}
+          loading="lazy"
+        />
+      );
+
+    case 'yuregen':
+      return (
+        <img
+          src={yuregenLogo}
+          alt="Yuregen Natural Joint Supplements"
+          className={`${className} object-contain max-h-8`}
+          loading="lazy"
+        />
+      );
+
+    case 'ccan':
+      return (
+        <img
+          src={ccanLogo}
+          alt="Canadian Community Alliance Network"
+          className={`${className} object-contain max-h-8`}
+          loading="lazy"
+        />
+      );
+
+    case 'lasenby':
+      return (
+        <img
+          src={lasenbyLogo}
+          alt="Lasenby Realty"
+          className={`${className} object-contain max-h-8`}
+          loading="lazy"
+        />
+      );
+
+    case 'torontodance':
+      return (
+        <img
+          src={torontoDanceLogo}
+          alt="Toronto Dance Salsa"
+          className={`${className} object-contain max-h-8`}
+          loading="lazy"
+        />
+      );
+
+    case 'yardsale':
+      return (
+        <img
+          src={yardSaleLogo}
+          alt="Yard Sale"
+          className={`${className} object-contain max-h-14`}
+          loading="lazy"
+        />
+      );
+
+    case 'rumi':
+      return (
         <div className={`flex items-center gap-2 select-none ${className}`}>
-          <svg className="w-6 h-6 text-current flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-            <path d="M12 4c-3 0-5 2-5 5 0 4 5 11 5 11s5-7 5-11c0-3-2-5-5-5z" fill="currentColor" fillOpacity="0.12" />
-            <circle cx="9" cy="9" r="1.5" fill="currentColor" />
-            <circle cx="15" cy="9" r="1.5" fill="currentColor" />
-          </svg>
-          <span className="font-sans font-extrabold tracking-wider text-sm uppercase">PETSMONT</span>
+          <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 flex items-center justify-center text-white text-[10px] font-bold shadow-xs">
+            R
+          </div>
+          <span className="font-sans font-bold tracking-tight text-sm">Rumi</span>
+        </div>
+      );
+
+    case 'gloria':
+      return (
+        <div className={`flex items-center gap-2 select-none ${className}`}>
+          <div className="w-6 h-6 rounded-md bg-[#1877F2] flex items-center justify-center text-white font-bold text-xs font-serif shadow-xs">
+            f
+          </div>
+          <span className="font-sans font-bold tracking-tight text-sm">Gloria<span className="font-light"> Quotes</span></span>
         </div>
       );
 
@@ -75,25 +176,17 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
 
     case 'rbc':
       return (
-        <div className={`flex items-center gap-2 select-none ${className}`}>
-          <div className="w-6 h-6 rounded bg-current/15 border border-current/30 flex items-center justify-center font-serif font-black text-xs text-current flex-shrink-0">
-            R
-          </div>
+        <div className={`flex items-center gap-2.5 select-none ${className}`}>
+          <img
+            src={rbcLogo}
+            alt="RBC Wealth Management"
+            className="h-7 w-auto object-contain"
+            loading="lazy"
+          />
           <div className="flex flex-col text-left leading-none">
-            <span className="font-sans font-bold tracking-widest text-xs uppercase">RBC</span>
-            <span className="font-sans text-[8px] tracking-wider text-current/60 uppercase mt-0.5">Wealth Management</span>
+            <span className="font-sans font-bold tracking-wider text-xs uppercase text-[#005daa]">RBC</span>
+            <span className="font-sans text-[8px] tracking-wider text-black/60 uppercase mt-0.5 font-medium">Wealth Management</span>
           </div>
-        </div>
-      );
-
-    case 'halalmeals':
-      return (
-        <div className={`flex items-center gap-1.5 select-none ${className}`}>
-          <svg className="w-6 h-6 text-current flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-            <circle cx="12" cy="12" r="9" />
-            <path d="M8 12h8M12 8v8" strokeLinecap="round" />
-          </svg>
-          <span className="font-sans font-semibold tracking-tight text-sm">Halal<span className="font-light">Meals</span></span>
         </div>
       );
 

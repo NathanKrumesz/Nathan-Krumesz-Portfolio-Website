@@ -82,7 +82,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume, onOpenContact, onSelec
             <div className="flex items-center gap-3">
               <div className="relative">
                 <img
-                  src="/src/assets/images/portrait.jpg"
+                  src="/src/assets/images/nathan-black-hoodie.png"
                   alt="Nathan Krumesz"
                   className="w-11 h-11 rounded-full object-cover border border-white/30"
                 />
@@ -101,12 +101,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume, onOpenContact, onSelec
               </div>
             </div>
             <p className="mt-2.5 text-xs text-white/90 leading-relaxed">
-              "Scaled cold prospect ad sets at <span className="font-semibold text-white underline decoration-emerald-400">4.2x ROAS</span> while dropping CAC by 28% through iterative hook testing."
+              "Doubled Average Order Value from <span className="font-semibold text-white underline decoration-emerald-400">$90 to $180</span> with creative ad variants that beat dedicated agency teams."
             </p>
             <div className="mt-2 flex items-center justify-between text-[11px] text-white/60 pt-2 border-t border-white/10">
               <span className="flex items-center gap-1 font-mono text-white/90">
                 <Zap className="w-3 h-3 text-amber-300" />
-                1,480 Orders / 7 Days
+                2x AOV Expansion
               </span>
               <span className="group-hover:translate-x-1 transition-transform text-white/80 flex items-center gap-1">
                 Inspect metrics →

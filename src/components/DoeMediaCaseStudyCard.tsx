@@ -187,22 +187,35 @@ export const DoeMediaCaseStudyCard: React.FC<DoeMediaCaseStudyCardProps> = ({
               }}
               title="Click to inspect creative"
             >
-              <img
-                src={study.leftImage || study.image}
-                alt={`${study.client} ad creative variation`}
-                className="w-full h-[360px] xl:h-[410px] object-cover group-hover/left:scale-105 transition-transform duration-500"
-                loading="lazy"
-              />
+              {study.leftVideo ? (
+                <video
+                  src={study.leftVideo}
+                  poster={study.leftImage || study.videoPoster}
+                  preload="metadata"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-[360px] xl:h-[410px] object-cover group-hover/left:scale-105 transition-transform duration-500"
+                />
+              ) : (
+                <img
+                  src={study.leftImage || study.image}
+                  alt={`${study.client} ad creative variation`}
+                  className="w-full h-[360px] xl:h-[410px] object-cover group-hover/left:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent pointer-events-none" />
 
               <div className="absolute top-3 left-3">
                 <span className="text-[10px] font-mono uppercase tracking-wider bg-black/70 text-white/90 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/15">
-                  Creative Hook
+                  {study.leftVideo ? 'Video Creative' : 'Creative Hook'}
                 </span>
               </div>
 
               <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] text-white/80">
-                <span className="font-medium truncate">Top Converting Ad</span>
+                <span className="font-medium truncate">{study.leftVideo ? 'Direct Response Video' : 'Top Converting Ad'}</span>
                 <span className="text-white/60 group-hover/left:text-white flex items-center gap-0.5">
                   <Eye className="w-3 h-3" />
                 </span>
@@ -305,22 +318,35 @@ export const DoeMediaCaseStudyCard: React.FC<DoeMediaCaseStudyCardProps> = ({
               }}
               title="Click to inspect analytics"
             >
-              <img
-                src={study.rightImage || study.image}
-                alt={`${study.client} campaign analytics dashboard`}
-                className="w-full h-[360px] xl:h-[410px] object-cover group-hover/right:scale-105 transition-transform duration-500"
-                loading="lazy"
-              />
+              {study.rightVideo ? (
+                <video
+                  src={study.rightVideo}
+                  poster={study.rightImage || study.secondaryVideoPoster}
+                  preload="metadata"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-[360px] xl:h-[410px] object-cover group-hover/right:scale-105 transition-transform duration-500"
+                />
+              ) : (
+                <img
+                  src={study.rightImage || study.image}
+                  alt={`${study.client} campaign analytics dashboard`}
+                  className="w-full h-[360px] xl:h-[410px] object-cover group-hover/right:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent pointer-events-none" />
 
               <div className="absolute top-3 right-3">
                 <span className="text-[10px] font-mono uppercase tracking-wider bg-black/70 text-emerald-300 backdrop-blur-md px-2.5 py-1 rounded-full border border-emerald-500/30">
-                  Verified Data
+                  {study.rightVideo ? 'Vertical 9:16 Video' : 'Verified Data'}
                 </span>
               </div>
 
               <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] text-white/80">
-                <span className="font-medium truncate">Campaign Analytics</span>
+                <span className="font-medium truncate">{study.rightVideo ? 'Demonstration Ad' : 'Campaign Analytics'}</span>
                 <span className="text-white/60 group-hover/right:text-white flex items-center gap-0.5">
                   <Eye className="w-3 h-3" />
                 </span>
@@ -335,14 +361,27 @@ export const DoeMediaCaseStudyCard: React.FC<DoeMediaCaseStudyCardProps> = ({
             onClick={() => onSelectCaseStudy(study)}
             className="relative rounded-2xl overflow-hidden cursor-pointer border border-white/10 aspect-[16/10] bg-black group/m1"
           >
-            <img
-              src={study.leftImage || study.image}
-              alt={`${study.client} ad creative`}
-              className="w-full h-full object-cover group-hover/m1:scale-105 transition-transform duration-300"
-            />
+            {study.leftVideo ? (
+              <video
+                src={study.leftVideo}
+                poster={study.leftImage || study.videoPoster}
+                preload="metadata"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover group-hover/m1:scale-105 transition-transform duration-300"
+              />
+            ) : (
+              <img
+                src={study.leftImage || study.image}
+                alt={`${study.client} ad creative`}
+                className="w-full h-full object-cover group-hover/m1:scale-105 transition-transform duration-300"
+              />
+            )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
             <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-white">
-              <span className="text-[11px] font-mono text-emerald-300">Ad Creative Asset</span>
+              <span className="text-[11px] font-mono text-emerald-300">{study.leftVideo ? 'Video Creative' : 'Ad Creative Asset'}</span>
               <span className="text-[11px] text-white/60 flex items-center gap-1">
                 Inspect <ChevronRight className="w-3 h-3" />
               </span>
@@ -353,14 +392,27 @@ export const DoeMediaCaseStudyCard: React.FC<DoeMediaCaseStudyCardProps> = ({
             onClick={() => onSelectCaseStudy(study)}
             className="relative rounded-2xl overflow-hidden cursor-pointer border border-white/10 aspect-[16/10] bg-black group/m2"
           >
-            <img
-              src={study.rightImage || study.image}
-              alt={`${study.client} analytics`}
-              className="w-full h-full object-cover group-hover/m2:scale-105 transition-transform duration-300"
-            />
+            {study.rightVideo ? (
+              <video
+                src={study.rightVideo}
+                poster={study.rightImage || study.secondaryVideoPoster}
+                preload="metadata"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover group-hover/m2:scale-105 transition-transform duration-300"
+              />
+            ) : (
+              <img
+                src={study.rightImage || study.image}
+                alt={`${study.client} analytics`}
+                className="w-full h-full object-cover group-hover/m2:scale-105 transition-transform duration-300"
+              />
+            )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
             <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-white">
-              <span className="text-[11px] font-mono text-cyan-300">Campaign Metrics</span>
+              <span className="text-[11px] font-mono text-cyan-300">{study.rightVideo ? 'Vertical Video Ad' : 'Campaign Metrics'}</span>
               <span className="text-[11px] text-white/60 flex items-center gap-1">
                 Inspect <ChevronRight className="w-3 h-3" />
               </span>

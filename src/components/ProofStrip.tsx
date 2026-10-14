@@ -29,22 +29,22 @@ export const ProofStrip: React.FC = () => {
         </ScrollReveal>
 
         {/* 5 Big Stat Blocks Grid (DOE-Media Style) */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-5">
           {PERSONAL_INFO.stats.map((stat, idx) => (
             <ScrollReveal
               key={idx}
               delay={idx * 50}
-              className="bg-[#F7F7F6] hover:bg-[#EFEFEE] transition-all duration-300 rounded-2xl p-6 border border-black/5 flex flex-col justify-between group hover:-translate-y-1"
+              className="bg-[#F7F7F6] hover:bg-[#EFEFEE] transition-all duration-300 rounded-2xl p-5 sm:p-6 border border-black/5 flex flex-col justify-between group hover:-translate-y-1 min-w-0 overflow-hidden"
             >
-              <div>
-                <span className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0A0A0A] block group-hover:text-black">
+              <div className="min-w-0">
+                <span className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#0A0A0A] block group-hover:text-black truncate">
                   <AnimatedCounter value={stat.value} duration={1200 + idx * 80} />
                 </span>
-                <span className="mt-2 text-sm font-semibold text-[#0A0A0A] block leading-snug">
+                <span className="mt-2 text-xs sm:text-sm font-semibold text-[#0A0A0A] block leading-snug break-words">
                   {stat.label}
                 </span>
               </div>
-              <p className="mt-3 text-xs text-black/60 leading-normal">
+              <p className="mt-3 text-[11px] sm:text-xs text-black/60 leading-normal break-words">
                 {stat.subtext}
               </p>
             </ScrollReveal>
