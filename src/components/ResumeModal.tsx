@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Printer, Copy, Check, Download, Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
+import { X, Printer, Copy, Check, Download, Mail, MapPin, ExternalLink } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { LogoMark } from './Logo';
 
@@ -14,173 +14,42 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onOpe
 
   if (!isOpen) return null;
 
-  const handlePrint = () => {
-    // Collect the resume DOM node
-    const resumeEl = document.getElementById('resume-printable-content');
-    if (!resumeEl) {
-      window.print();
-      return;
-    }
-
+  const handleDownloadPdf = async () => {
     try {
-      // In embedded iframe sandboxes, window.print() can sometimes be blocked or print the parent.
-      // An isolated hidden iframe ensures reliable Print / Save as PDF across all browsers & iframes.
-      const printFrame = document.createElement('iframe');
-      printFrame.style.position = 'fixed';
-      printFrame.style.right = '0';
-      printFrame.style.bottom = '0';
-      printFrame.style.width = '0';
-      printFrame.style.height = '0';
-      printFrame.style.border = '0';
-      printFrame.setAttribute('aria-hidden', 'true');
-      document.body.appendChild(printFrame);
-
-      const frameDoc = printFrame.contentWindow?.document || printFrame.contentDocument;
-      if (!frameDoc || !printFrame.contentWindow) {
-        window.print();
-        return;
-      }
-
-      frameDoc.open();
-      frameDoc.write(`
-        <!DOCTYPE html>
-        <html>
-          <head>
-            <title>Nathan Krumesz - Resume</title>
-            <meta charset="utf-8" />
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-            <style>
-              @page {
-                size: letter portrait;
-                margin: 18mm 16mm;
-              }
-              * {
-                box-sizing: border-box;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-              }
-              body {
-                font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-                color: #111114;
-                background: #ffffff;
-                margin: 0;
-                padding: 0;
-                font-size: 11pt;
-                line-height: 1.45;
-              }
-              h1 {
-                font-size: 24pt;
-                font-weight: 700;
-                margin: 0 0 6px 0;
-                letter-spacing: -0.02em;
-                text-align: center;
-              }
-              .contact-line {
-                font-family: 'JetBrains Mono', monospace;
-                font-size: 8.5pt;
-                color: #444;
-                text-align: center;
-                margin-bottom: 16px;
-                padding-bottom: 14px;
-                border-bottom: 1.5px solid #000;
-              }
-              .section-title {
-                font-family: 'JetBrains Mono', monospace;
-                font-size: 8.5pt;
-                font-weight: 700;
-                text-transform: uppercase;
-                letter-spacing: 0.12em;
-                border-bottom: 1px solid #000;
-                padding-bottom: 3px;
-                margin-top: 14px;
-                margin-bottom: 8px;
-              }
-              .summary-text {
-                font-size: 9.5pt;
-                line-height: 1.5;
-                color: #222;
-                margin: 0;
-              }
-              .skills-grid p {
-                font-size: 9pt;
-                line-height: 1.45;
-                margin: 3px 0;
-              }
-              .skills-grid strong {
-                color: #000;
-                font-weight: 600;
-              }
-              .role-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: baseline;
-                font-size: 10pt;
-                margin-top: 10px;
-              }
-              .role-header h3 {
-                margin: 0;
-                font-size: 10pt;
-                font-weight: 700;
-              }
-              .role-sub {
-                font-size: 8.5pt;
-                color: #444;
-                font-style: italic;
-                margin: 1px 0 4px 0;
-              }
-              .period {
-                font-family: 'JetBrains Mono', monospace;
-                font-size: 8pt;
-                color: #444;
-              }
-              ul {
-                margin: 3px 0 8px 18px;
-                padding: 0;
-              }
-              li {
-                font-size: 9pt;
-                line-height: 1.4;
-                color: #222;
-                margin-bottom: 3px;
-              }
-              @media print {
-                body { margin: 0; }
-                .no-break { page-break-inside: avoid; }
-              }
-            </style>
-          </head>
-          <body>
-            ${resumeEl.innerHTML}
-          </body>
-        </html>
-      `);
-      frameDoc.close();
-
+      const response = await fetch('/Nathan_Krumesz_Resume.pdf');
+      const blob = await response.blob();
+      const blobUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.download = 'Nathan_Krumesz_Digital_Marketing_Resume.pdf';
+      document.body.appendChild(link);
+      link.click();
       setTimeout(() => {
-        try {
-          printFrame.contentWindow?.focus();
-          printFrame.contentWindow?.print();
-        } catch {
-          window.print();
-        } finally {
-          setTimeout(() => {
-            if (document.body.contains(printFrame)) {
-              document.body.removeChild(printFrame);
-            }
-          }, 3000);
-        }
-      }, 350);
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(blobUrl);
+      }, 2000);
     } catch {
+      const link = document.createElement('a');
+      link.href = '/Nathan_Krumesz_Resume.pdf';
+      link.download = 'Nathan_Krumesz_Digital_Marketing_Resume.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
+
+  const handlePrint = () => {
+    try {
       window.print();
+    } catch {
+      handleDownloadPdf();
     }
   };
 
   const copyResumeText = () => {
     const text = `
 NATHAN KRUMESZ
-Toronto, Ontario, Canada | 647-535-3254 | nathan.krumesz@alumni.utoronto.ca | https://linkedin.com/in/nathankrumesz
+Toronto, Ontario, Canada | nathan.krumesz@alumni.utoronto.ca | https://linkedin.com/in/nathankrumesz
 
 PROFESSIONAL SUMMARY
 ${PERSONAL_INFO.summary}
@@ -253,10 +122,10 @@ CERTIFICATIONS
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 md:p-6 overflow-y-auto">
-      <div className="bg-white text-[#0A0A0A] rounded-3xl max-w-4xl w-full border border-black/10 shadow-2xl overflow-hidden my-auto max-h-[94vh] flex flex-col">
+    <div className="resume-modal-overlay fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 md:p-6 overflow-y-auto">
+      <div className="resume-modal-container bg-white text-[#0A0A0A] rounded-3xl max-w-4xl w-full border border-black/10 shadow-2xl overflow-hidden my-auto max-h-[94vh] flex flex-col">
         {/* Top Control Bar */}
-        <div className="p-4 sm:p-5 border-b border-black/10 flex items-center justify-between bg-[#F7F7F6]">
+        <div className="resume-modal-controls p-4 sm:p-5 border-b border-black/10 flex items-center justify-between bg-[#F7F7F6]">
           <div className="flex items-center gap-2.5">
             <LogoMark size="xs" theme="light" />
             <span className="text-black/30 font-mono text-xs">/</span>
@@ -265,10 +134,10 @@ CERTIFICATIONS
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={copyResumeText}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-black/15 text-xs text-black/80 hover:bg-black/5 transition-all shadow-xs"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-black/15 text-xs text-black/80 hover:bg-black/5 transition-all shadow-xs cursor-pointer"
             >
               {copied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
               <span>{copied ? 'Copied' : 'Copy Text'}</span>
@@ -276,15 +145,26 @@ CERTIFICATIONS
 
             <button
               onClick={handlePrint}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black text-white text-xs font-medium hover:bg-black/85 transition-all"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black text-white text-xs font-medium hover:bg-black/85 transition-all cursor-pointer"
+              title="Open browser print dialog to Print or Save as PDF"
             >
-              <Printer className="w-3.5 h-3.5" />
+              <Printer className="w-3.5 h-3.5 text-emerald-400" />
               <span>Print / Save PDF</span>
             </button>
 
             <button
+              onClick={handleDownloadPdf}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-black/15 text-xs text-black/80 hover:bg-black/5 transition-all shadow-xs cursor-pointer"
+              title="Download official PDF resume file directly"
+            >
+              <Download className="w-3.5 h-3.5 text-black" />
+              <span>Download PDF</span>
+            </button>
+
+            <button
               onClick={onClose}
-              className="p-1.5 rounded-full text-black/60 hover:text-black hover:bg-black/10 transition-colors ml-1"
+              className="p-1.5 rounded-full text-black/60 hover:text-black hover:bg-black/10 transition-colors ml-1 cursor-pointer"
+              aria-label="Close modal"
             >
               <X className="w-5 h-5" />
             </button>
@@ -302,7 +182,7 @@ CERTIFICATIONS
               Nathan Krumesz
             </h1>
             <p className="contact-line mt-2 text-xs sm:text-sm text-black/70 font-mono">
-              Toronto, Ontario, Canada &nbsp;|&nbsp; 647-535-3254 &nbsp;|&nbsp; nathan.krumesz@alumni.utoronto.ca &nbsp;|&nbsp; <a href={PERSONAL_INFO.linkedin} target="_blank" rel="noopener noreferrer" className="hover:underline text-black font-medium">{PERSONAL_INFO.linkedinHandle}</a>
+              Toronto, Ontario, Canada &nbsp;|&nbsp; nathan.krumesz@alumni.utoronto.ca &nbsp;|&nbsp; <a href={PERSONAL_INFO.linkedin} target="_blank" rel="noopener noreferrer" className="hover:underline text-black font-medium">{PERSONAL_INFO.linkedinHandle}</a>
             </p>
           </div>
 
@@ -512,7 +392,7 @@ CERTIFICATIONS
         </div>
 
         {/* Footer */}
-        <div className="p-4 sm:p-5 border-t border-black/10 bg-[#F7F7F6] flex items-center justify-between">
+        <div className="resume-modal-footer p-4 sm:p-5 border-t border-black/10 bg-[#F7F7F6] flex items-center justify-between">
           <span className="text-xs font-mono text-black/60">
             Looking to hire Nathan? Let's talk today.
           </span>

@@ -9,6 +9,97 @@ interface DoeMediaCaseStudyCardProps {
   onSelectCaseStudy: (caseStudy: CaseStudy) => void;
 }
 
+const AutoLoopVideo: React.FC<{
+  src: string;
+  poster?: string;
+  className?: string;
+  altText?: string;
+  fallbackSrc?: string;
+}> = ({ src, poster, className, altText, fallbackSrc }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoSrc, setVideoSrc] = useState(src);
+
+  useEffect(() => {
+    setVideoSrc(src);
+  }, [src]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Direct property assignment to bypass React JSX muted bug
+    video.defaultMuted = true;
+    video.muted = true;
+    video.playsInline = true;
+
+    const playVideo = () => {
+      if (!video) return;
+      video.muted = true;
+      const promise = video.play();
+      if (promise !== undefined) {
+        promise.catch(() => {
+          // Fallback if browser blocks until interaction
+          const onInteract = () => {
+            if (video) {
+              video.muted = true;
+              video.play().catch(() => {});
+            }
+            window.removeEventListener('click', onInteract);
+            window.removeEventListener('touchstart', onInteract);
+          };
+          window.addEventListener('click', onInteract, { once: true, passive: true });
+          window.addEventListener('touchstart', onInteract, { once: true, passive: true });
+        });
+      }
+    };
+
+    if (typeof IntersectionObserver !== 'undefined') {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              playVideo();
+            } else {
+              video.pause();
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      observer.observe(video);
+      playVideo();
+      return () => observer.disconnect();
+    } else {
+      playVideo();
+    }
+  }, [videoSrc]);
+
+  return (
+    <video
+      key={videoSrc}
+      ref={videoRef}
+      poster={poster}
+      preload="auto"
+      autoPlay
+      loop
+      muted
+      playsInline
+      className={className}
+      aria-label={altText}
+      onError={() => {
+        if (fallbackSrc && videoSrc !== fallbackSrc) {
+          setVideoSrc(fallbackSrc);
+        }
+      }}
+    >
+      <source src={videoSrc} type="video/mp4" />
+      {fallbackSrc && fallbackSrc !== videoSrc && (
+        <source src={fallbackSrc} type="video/mp4" />
+      )}
+    </video>
+  );
+};
+
 export const DoeMediaCaseStudyCard: React.FC<DoeMediaCaseStudyCardProps> = ({
   study,
   index,
@@ -20,6 +111,8 @@ export const DoeMediaCaseStudyCard: React.FC<DoeMediaCaseStudyCardProps> = ({
   const [isInView, setIsInView] = useState(false);
   const [isPassed, setIsPassed] = useState(false);
   const [activeEase, setActiveEase] = useState(0);
+
+  const activeLeftVideo = study.leftVideo;
 
   // Intersection Observer for initial reveal & triggering counter animations
   useEffect(() => {
@@ -187,16 +280,13 @@ export const DoeMediaCaseStudyCard: React.FC<DoeMediaCaseStudyCardProps> = ({
               }}
               title="Click to inspect creative"
             >
-              {study.leftVideo ? (
-                <video
-                  src={study.leftVideo}
+              {activeLeftVideo ? (
+                <AutoLoopVideo
+                  src={activeLeftVideo}
+                  fallbackSrc={study.leftVideoRemote}
                   poster={study.leftImage || study.videoPoster}
-                  preload="metadata"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
                   className="w-full h-[360px] xl:h-[410px] object-cover group-hover/left:scale-105 transition-transform duration-500"
+                  altText={`${study.client} video creative`}
                 />
               ) : (
                 <img
@@ -210,12 +300,12 @@ export const DoeMediaCaseStudyCard: React.FC<DoeMediaCaseStudyCardProps> = ({
 
               <div className="absolute top-3 left-3">
                 <span className="text-[10px] font-mono uppercase tracking-wider bg-black/70 text-white/90 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/15">
-                  {study.leftVideo ? 'Video Creative' : 'Creative Hook'}
+                  {activeLeftVideo ? 'Video Creative' : 'Creative Hook'}
                 </span>
               </div>
 
               <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] text-white/80">
-                <span className="font-medium truncate">{study.leftVideo ? 'Direct Response Video' : 'Top Converting Ad'}</span>
+                <span className="font-medium truncate">{activeLeftVideo ? 'Direct Response Video' : 'Top Converting Ad'}</span>
                 <span className="text-white/60 group-hover/left:text-white flex items-center gap-0.5">
                   <Eye className="w-3 h-3" />
                 </span>
@@ -319,21 +409,35 @@ export const DoeMediaCaseStudyCard: React.FC<DoeMediaCaseStudyCardProps> = ({
               title="Click to inspect analytics"
             >
               {study.rightVideo ? (
-                <video
+                <AutoLoopVideo
                   src={study.rightVideo}
                   poster={study.rightImage || study.secondaryVideoPoster}
-                  preload="metadata"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
                   className="w-full h-[360px] xl:h-[410px] object-cover group-hover/right:scale-105 transition-transform duration-500"
+                  altText={`${study.client} demonstration video`}
                 />
+              ) : study.id === 'mighti-mushrooms' ? (
+                <div className="w-full h-[360px] xl:h-[410px] overflow-hidden bg-black flex items-start justify-center">
+                  <img
+                    src="/portfolio/mighti-sales-page-top.jpg"
+                    alt="Mighty Fungi Direct Response Sales Funnel Architecture"
+                    className="w-full h-full object-cover object-top scale-[1.18] origin-top group-hover/right:scale-[1.24] transition-transform duration-500"
+                    loading="eager"
+                  />
+                </div>
+              ) : study.id === 'kalaia-skincare' ? (
+                <div className="w-full h-[360px] xl:h-[410px] overflow-hidden bg-black flex items-start justify-center">
+                  <img
+                    src="/portfolio/kalaia-sales-page-top.png"
+                    alt="Kalaia Detox & Balance Sales Funnel Architecture"
+                    className="w-full h-full object-cover object-top scale-[1.15] origin-top group-hover/right:scale-[1.20] transition-transform duration-500"
+                    loading="eager"
+                  />
+                </div>
               ) : (
                 <img
                   src={study.rightImage || study.image}
                   alt={`${study.client} campaign analytics dashboard`}
-                  className="w-full h-[360px] xl:h-[410px] object-cover group-hover/right:scale-105 transition-transform duration-500"
+                  className="w-full h-[360px] xl:h-[410px] object-cover object-top group-hover/right:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
               )}
@@ -341,12 +445,12 @@ export const DoeMediaCaseStudyCard: React.FC<DoeMediaCaseStudyCardProps> = ({
 
               <div className="absolute top-3 right-3">
                 <span className="text-[10px] font-mono uppercase tracking-wider bg-black/70 text-emerald-300 backdrop-blur-md px-2.5 py-1 rounded-full border border-emerald-500/30">
-                  {study.rightVideo ? 'Vertical 9:16 Video' : 'Verified Data'}
+                  {study.rightVideo ? 'Vertical 9:16 Video' : (study.id === 'kalaia-skincare' || study.id === 'mighti-mushrooms') ? 'Full Sales Page' : 'Verified Data'}
                 </span>
               </div>
 
               <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] text-white/80">
-                <span className="font-medium truncate">{study.rightVideo ? 'Demonstration Ad' : 'Campaign Analytics'}</span>
+                <span className="font-medium truncate">{study.rightVideo ? 'Demonstration Ad' : (study.id === 'kalaia-skincare' || study.id === 'mighti-mushrooms') ? 'ClickFunnels Architecture' : 'Campaign Analytics'}</span>
                 <span className="text-white/60 group-hover/right:text-white flex items-center gap-0.5">
                   <Eye className="w-3 h-3" />
                 </span>
@@ -361,16 +465,13 @@ export const DoeMediaCaseStudyCard: React.FC<DoeMediaCaseStudyCardProps> = ({
             onClick={() => onSelectCaseStudy(study)}
             className="relative rounded-2xl overflow-hidden cursor-pointer border border-white/10 aspect-[16/10] bg-black group/m1"
           >
-            {study.leftVideo ? (
-              <video
-                src={study.leftVideo}
+            {activeLeftVideo ? (
+              <AutoLoopVideo
+                src={activeLeftVideo}
+                fallbackSrc={study.leftVideoRemote}
                 poster={study.leftImage || study.videoPoster}
-                preload="metadata"
-                autoPlay
-                loop
-                muted
-                playsInline
                 className="w-full h-full object-cover group-hover/m1:scale-105 transition-transform duration-300"
+                altText={`${study.client} video creative`}
               />
             ) : (
               <img
@@ -380,8 +481,10 @@ export const DoeMediaCaseStudyCard: React.FC<DoeMediaCaseStudyCardProps> = ({
               />
             )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+
+
             <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-white">
-              <span className="text-[11px] font-mono text-emerald-300">{study.leftVideo ? 'Video Creative' : 'Ad Creative Asset'}</span>
+              <span className="text-[11px] font-mono text-emerald-300">{activeLeftVideo ? 'Video Creative' : 'Ad Creative Asset'}</span>
               <span className="text-[11px] text-white/60 flex items-center gap-1">
                 Inspect <ChevronRight className="w-3 h-3" />
               </span>
@@ -393,26 +496,34 @@ export const DoeMediaCaseStudyCard: React.FC<DoeMediaCaseStudyCardProps> = ({
             className="relative rounded-2xl overflow-hidden cursor-pointer border border-white/10 aspect-[16/10] bg-black group/m2"
           >
             {study.rightVideo ? (
-              <video
+              <AutoLoopVideo
                 src={study.rightVideo}
                 poster={study.rightImage || study.secondaryVideoPoster}
-                preload="metadata"
-                autoPlay
-                loop
-                muted
-                playsInline
                 className="w-full h-full object-cover group-hover/m2:scale-105 transition-transform duration-300"
+                altText={`${study.client} demonstration video`}
+              />
+            ) : study.id === 'mighti-mushrooms' ? (
+              <img
+                src="/portfolio/mighti-sales-page-top.jpg"
+                alt="Mighty Fungi Sales Funnel"
+                className="w-full h-full object-cover object-top scale-[1.15] origin-top group-hover/m2:scale-[1.22] transition-transform duration-300"
+              />
+            ) : study.id === 'kalaia-skincare' ? (
+              <img
+                src="/portfolio/kalaia-sales-page-top.png"
+                alt="Kalaia Detox & Balance Sales Funnel"
+                className="w-full h-full object-cover object-top scale-[1.12] origin-top group-hover/m2:scale-[1.18] transition-transform duration-300"
               />
             ) : (
               <img
                 src={study.rightImage || study.image}
                 alt={`${study.client} analytics`}
-                className="w-full h-full object-cover group-hover/m2:scale-105 transition-transform duration-300"
+                className="w-full h-full object-cover object-top group-hover/m2:scale-105 transition-transform duration-300"
               />
             )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
             <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-white">
-              <span className="text-[11px] font-mono text-cyan-300">{study.rightVideo ? 'Vertical Video Ad' : 'Campaign Metrics'}</span>
+              <span className="text-[11px] font-mono text-cyan-300">{study.rightVideo ? 'Vertical Video Ad' : (study.id === 'kalaia-skincare' || study.id === 'mighti-mushrooms') ? 'Sales Page Funnel' : 'Campaign Metrics'}</span>
               <span className="text-[11px] text-white/60 flex items-center gap-1">
                 Inspect <ChevronRight className="w-3 h-3" />
               </span>

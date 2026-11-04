@@ -1,23 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { TESTIMONIALS, Testimonial } from '../data/portfolioData';
-import { Star, CheckCircle2, Play, X } from 'lucide-react';
+import { Star, CheckCircle2, Play, X, FileText, Eye, ArrowUpRight } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
+
+interface ActiveProof {
+  title: string;
+  image: string;
+  author: string;
+  company?: string;
+  metric?: string;
+}
 
 export const TestimonialsSection: React.FC = () => {
   const [activeVideoTestimonial, setActiveVideoTestimonial] = useState<Testimonial | null>(null);
+  const [activeProofScreenshot, setActiveProofScreenshot] = useState<ActiveProof | null>(null);
 
   // Close on Escape key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        setActiveVideoTestimonial(null);
+        if (activeProofScreenshot) {
+          setActiveProofScreenshot(null);
+        } else if (activeVideoTestimonial) {
+          setActiveVideoTestimonial(null);
+        }
       }
     };
-    if (activeVideoTestimonial) {
+    if (activeVideoTestimonial || activeProofScreenshot) {
       window.addEventListener('keydown', handleKeyDown);
     }
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [activeVideoTestimonial]);
+  }, [activeVideoTestimonial, activeProofScreenshot]);
 
   return (
     <section className="py-24 sm:py-32 bg-[#F7F7F6] border-b border-black/5">
@@ -31,7 +44,7 @@ export const TestimonialsSection: React.FC = () => {
             Client & Partner <span className="font-serif italic text-black font-normal">Reviews.</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-black/60 font-light">
-            Real client testimonials and performance reviews from founders, realtors, and entrepreneurs across e-commerce, fitness, and direct response.
+            Real client testimonials and performance reviews with verified screenshot proof from founders, realtors, and entrepreneurs across e-commerce, fitness, and direct response.
           </p>
         </ScrollReveal>
 
@@ -98,15 +111,36 @@ export const TestimonialsSection: React.FC = () => {
                   "{t.text}"
                 </p>
 
-                {/* Action button if video */}
-                {t.videoUrl && (
+                {/* Screenshot Proof Button for Written Testimonials */}
+                {t.screenshotProof && !t.videoUrl && (
                   <button
-                    onClick={() => setActiveVideoTestimonial(t)}
-                    className="w-full mb-4 py-2 px-3 rounded-xl bg-black text-white text-xs font-medium flex items-center justify-center gap-2 hover:bg-neutral-800 transition-colors cursor-pointer"
+                    type="button"
+                    onClick={() => setActiveProofScreenshot({
+                      title: t.screenshotTitle || `${t.name} Verified Review Proof`,
+                      image: t.screenshotProof!,
+                      author: t.name,
+                      company: t.company,
+                      metric: t.metric
+                    })}
+                    className="w-full mb-4 py-2.5 px-3 rounded-xl bg-[#0A0A0A] hover:bg-black text-white text-xs font-medium flex items-center justify-center gap-2 transition-all cursor-pointer shadow-xs hover:shadow-md"
                   >
-                    <Play className="w-3 h-3 fill-current text-emerald-400" />
-                    <span>Watch Video Testimonial</span>
+                    <FileText className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>View Real Screenshot Proof</span>
+                    <Eye className="w-3.5 h-3.5 text-white/50 ml-auto" />
                   </button>
+                )}
+
+                {/* Video Action Button */}
+                {t.videoUrl && (
+                  <div className="mb-4">
+                    <button
+                      onClick={() => setActiveVideoTestimonial(t)}
+                      className="w-full py-2.5 px-3 rounded-xl bg-black text-white text-xs font-medium flex items-center justify-center gap-2 hover:bg-neutral-800 transition-colors cursor-pointer shadow-xs hover:shadow-md"
+                    >
+                      <Play className="w-3 h-3 fill-current text-emerald-400" />
+                      <span>Watch Video Testimonial</span>
+                    </button>
+                  </div>
                 )}
               </div>
 
@@ -128,6 +162,67 @@ export const TestimonialsSection: React.FC = () => {
           ))}
         </div>
       </div>
+
+      {/* REAL SCREENSHOT PROOF LIGHTBOX MODAL */}
+      {activeProofScreenshot && (
+        <div 
+          onClick={() => setActiveProofScreenshot(null)}
+          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto cursor-pointer"
+        >
+          <div 
+            onClick={(e) => e.stopPropagation()}
+            className="bg-[#050507] text-white rounded-3xl max-w-3xl w-full border border-white/20 shadow-2xl overflow-hidden animate-fade-in flex flex-col cursor-default relative my-auto max-h-[92vh]"
+          >
+            {/* Header */}
+            <div className="p-4 sm:p-5 border-b border-white/10 flex items-center justify-between bg-black/70 shrink-0">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-mono uppercase bg-emerald-950 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/30">
+                  Verified Screenshot Proof
+                </span>
+                <span className="text-xs font-mono text-white/70">
+                  {activeProofScreenshot.author}
+                </span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setActiveProofScreenshot(null)}
+                className="p-2 rounded-full bg-white/15 hover:bg-white/25 text-white transition-colors cursor-pointer border border-white/20"
+                aria-label="Close screenshot"
+              >
+                <X className="w-5 h-5 text-white" />
+              </button>
+            </div>
+
+            {/* Screenshot Display */}
+            <div className="relative bg-black flex items-center justify-center shrink-0 max-h-[64vh] overflow-hidden p-3 sm:p-6">
+              <img
+                src={activeProofScreenshot.image}
+                alt={activeProofScreenshot.title}
+                className="max-h-[60vh] w-auto max-w-full object-contain mx-auto rounded-xl shadow-2xl border border-white/10"
+              />
+            </div>
+
+            {/* Footer / Description */}
+            <div className="p-5 sm:p-6 bg-[#0A0A0E] border-t border-white/10">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <h3 className="text-sm sm:text-base font-semibold text-white">
+                    {activeProofScreenshot.title}
+                  </h3>
+                  <p className="text-xs text-white/60 font-mono mt-0.5">
+                    Authentic client feedback archive • {activeProofScreenshot.company}
+                  </p>
+                </div>
+                {activeProofScreenshot.metric && (
+                  <span className="text-xs font-mono text-emerald-400 bg-emerald-950/60 px-2.5 py-1 rounded-md border border-emerald-500/20 font-semibold self-start sm:self-auto">
+                    {activeProofScreenshot.metric}
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Video Modal Lightbox with Safe Backdrop and Escape handlers */}
       {activeVideoTestimonial && (

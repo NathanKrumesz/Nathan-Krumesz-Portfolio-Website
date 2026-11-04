@@ -21,7 +21,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume, onOpenContact }) =
 
   const navLinks = [
     { label: 'Brands', href: '#brands' },
-    { label: 'Services', href: '#services' },
+    { label: 'Skills', href: '#skills' },
     { label: 'Case Studies', href: '#case-studies' },
     { label: 'Vault', href: '#portfolio-vault' },
     { label: 'About', href: '#about' },

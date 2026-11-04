@@ -35,29 +35,35 @@
     color: var(--color-ink);
     background-color: var(--color-bg);
   }
+
+/* Titles where it isn't cursive: DM Sans Semi-Bold (600) */
+  h1, h2, h3, h4, h5, h6,
+  .font-heading,
+  .font-title {
+    font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-weight: 600;
+  }
 }
 
+/* Cursive / Editorial Serif: Editorial Old Thin Italic (fallback to Instrument Serif) */
 .font-serif {
-  font-family: 'Instrument Serif', Georgia, serif;
+  font-family: 'Editorial Old', 'PP Editorial Old', 'PPEditorialOld-Italic', 'Editorial New', 'PP Editorial New', 'Instrument Serif', Georgia, serif;
+  font-weight: 300;
+  font-style: italic;
 }
 
 .font-mono {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
 }
 
-/* Layered blurred color blobs from design.md */
+/* Hero & CTA Electric Blue / Violet Grain Backdrop (Matching User's Reference Image) */
 .hero__gradient {
   position: absolute;
-  inset: -15%;
-  background:
-    radial-gradient(46% 54% at 16% 22%, #183611 0%, transparent 70%),
-    radial-gradient(42% 48% at 84% 18%, #dda239 0%, transparent 68%),
-    radial-gradient(50% 52% at 86% 52%, #84add1 0%, transparent 70%),
-    radial-gradient(44% 54% at 18% 80%, #bed0df 0%, transparent 72%),
-    radial-gradient(58% 58% at 72% 86%, #092428 0%, transparent 70%),
-    #5f721c;
-  filter: blur(48px) saturate(1.22);
-  animation: drift 36s ease-in-out infinite alternate;
+  inset: 0;
+  background-color: #151630;
+  background-image: url('/images/bleu-grain-bg.jpg');
+  background-size: cover;
+  background-position: center;
   z-index: 0;
   pointer-events: none;
 }
@@ -65,17 +71,24 @@
 /* CTA Organic Blurred Gradient (Matching Hero section) */
 .cta__gradient {
   position: absolute;
-  inset: -15%;
-  background:
-    radial-gradient(48% 55% at 18% 22%, #183611 0%, transparent 70%),
-    radial-gradient(44% 52% at 82% 20%, #dda239 0%, transparent 68%),
-    radial-gradient(52% 52% at 86% 82%, #092428 0%, transparent 66%),
-    radial-gradient(46% 52% at 20% 76%, #5f721c 0%, transparent 70%),
-    radial-gradient(52% 52% at 50% 50%, #0d2822 0%, transparent 75%),
-    #0c2125;
-  filter: blur(52px) saturate(1.22);
-  animation: drift 40s ease-in-out infinite alternate;
+  inset: 0;
+  background-color: #151630;
+  background-image: url('/images/bleu-grain-bg.jpg');
+  background-size: cover;
+  background-position: center;
   z-index: 0;
+  pointer-events: none;
+}
+
+/* Subtle Binary Matrix Digital Code Texture Layer */
+.hero__matrix {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.085;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='440' height='360' fill='%23ffffff'><text x='15' y='28' font-family='monospace' font-size='15' opacity='0.55' letter-spacing='4'>01010100 01100101 01110011 01110100</text><text x='15' y='64' font-family='monospace' font-size='15' opacity='0.45' letter-spacing='4'>01000011 01110010 01100101 01100001</text><text x='15' y='100' font-family='monospace' font-size='15' opacity='0.55' letter-spacing='4'>01010011 01110100 01100010 01100001</text><text x='15' y='136' font-family='monospace' font-size='15' opacity='0.4' letter-spacing='4'>01000111 01110010 01101111 01110111</text><text x='15' y='172' font-family='monospace' font-size='15' opacity='0.5' letter-spacing='4'>01010010 01101111 01100001 01110011</text><text x='15' y='208' font-family='monospace' font-size='15' opacity='0.45' letter-spacing='4'>01000100 01100001 01110100 01100001</text><text x='15' y='244' font-family='monospace' font-size='15' opacity='0.55' letter-spacing='4'>01010011 01100011 01100001 01101100</text><text x='15' y='280' font-family='monospace' font-size='15' opacity='0.4' letter-spacing='4'>01001111 01100110 01100110 01100101</text><text x='15' y='316' font-family='monospace' font-size='15' opacity='0.5' letter-spacing='4'>01010000 01100101 01110010 01100110</text><text x='15' y='352' font-family='monospace' font-size='15' opacity='0.45' letter-spacing='4'>01000001 01110101 01100100 01101001</text></svg>");
+  background-size: 380px 310px;
   pointer-events: none;
 }
 
@@ -91,12 +104,12 @@
   pointer-events: none;
 }
 
-/* Primary High-Contrast Silver-Halide Tactile Film Grain (LearnMoss Reference Style) */
+/* Primary High-Contrast Silver-Halide Tactile Film Grain (Matching Reference) */
 .hero__grain {
   position: absolute;
   inset: 0;
   z-index: 2;
-  opacity: 0.52;
+  opacity: 0.58;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='filmGrain'><feTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/><feColorMatrix type='matrix' values='3.2 0 0 0 -1.1  0 3.2 0 0 -1.1  0 0 3.2 0 -1.1  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23filmGrain)'/></svg>");
   background-size: 180px 180px;
@@ -108,7 +121,7 @@
   position: absolute;
   inset: 0;
   z-index: 2;
-  opacity: 0.16;
+  opacity: 0.22;
   mix-blend-mode: hard-light;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='stipple'><feTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='matrix' values='2.5 0 0 0 -0.75  0 2.5 0 0 -0.75  0 0 2.5 0 -0.75  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23stipple)'/></svg>");
   background-size: 140px 140px;
@@ -276,12 +289,12 @@
   nav,
   #hero,
   #brands,
+  #skills,
   #services,
   #case-studies,
   #portfolio-vault,
   #about,
   #contact,
-  .fixed,
   .grain-subtle,
   .cta__gradient,
   .hero__gradient,
@@ -289,11 +302,35 @@
   .hero__grain-stipple {
     display: none !important;
   }
+  .resume-modal-overlay {
+    position: static !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    display: block !important;
+    backdrop-filter: none !important;
+  }
+  .resume-modal-container {
+    max-width: 100% !important;
+    max-height: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    overflow: visible !important;
+  }
+  .resume-modal-controls,
+  .resume-modal-footer {
+    display: none !important;
+  }
   #resume-printable-content {
     display: block !important;
     position: static !important;
     width: 100% !important;
-    padding: 0 !important;
+    padding: 24px 32px !important;
     margin: 0 !important;
     overflow: visible !important;
     max-height: none !important;

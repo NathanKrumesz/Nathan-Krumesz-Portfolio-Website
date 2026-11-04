@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PORTFOLIO_PIECES, PortfolioPiece } from '../data/portfolioData';
-import { Eye, X, Play, ChevronLeft, ChevronRight, Image as ImageIcon, ExternalLink } from 'lucide-react';
+import { Eye, X, Play, ChevronLeft, ChevronRight, Image as ImageIcon, ExternalLink, ArrowUpRight } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
 import { InteractiveMediaViewer } from './InteractiveMediaViewer';
 
@@ -39,9 +39,9 @@ export const PortfolioExplorer: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedPiece]);
 
-  const handleOpenPiece = (piece: PortfolioPiece) => {
+  const handleOpenPiece = (piece: PortfolioPiece, initialIndex: number = 0) => {
     setSelectedPiece(piece);
-    setActiveGalleryIndex(0);
+    setActiveGalleryIndex(initialIndex);
   };
 
   return (

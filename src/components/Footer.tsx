@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, Mail, Phone, FileText, Linkedin } from 'lucide-react';
+import { ArrowUp, Mail, FileText, Linkedin } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { LogoLockup } from './Logo';
 
@@ -29,8 +29,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume, onOpenContact }) =
           <a href="#case-studies" className="hover:text-white transition-colors">
             Case Studies
           </a>
-          <a href="#services" className="hover:text-white transition-colors">
-            Services
+          <a href="#skills" className="hover:text-white transition-colors">
+            Skills
           </a>
           <a href="#portfolio-vault" className="hover:text-white transition-colors">
             Portfolio Vault

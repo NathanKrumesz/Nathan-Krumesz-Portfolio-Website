@@ -23,7 +23,12 @@ export const InteractiveMediaViewer: React.FC<InteractiveMediaViewerProps> = ({
   // Strictly restrict scroll effect to full page website screenshots only
   const isFullPageWebsite =
     src.toLowerCase().includes('sales-page') ||
-    src.toLowerCase().includes('full-sales');
+    src.toLowerCase().includes('full-sales') ||
+    src.toLowerCase().includes('kalaia-detox-bar') ||
+    src.toLowerCase().includes('detox-bar') ||
+    src.toLowerCase().includes('kalaia') && src.toLowerCase().includes('bar') ||
+    src.toLowerCase().includes('funnel') ||
+    src.toLowerCase().includes('touch-heal');
 
   useEffect(() => {
     setScrollProgress(0);
@@ -32,10 +37,9 @@ export const InteractiveMediaViewer: React.FC<InteractiveMediaViewerProps> = ({
     setIsTallImage(isFullPageWebsite);
   }, [src, isFullPageWebsite]);
 
-  const handleImageLoad = () => {
-    // Intentionally do NOT activate scroll mode based on aspect ratio alone
-    // to keep Facebook, Instagram, and regular creatives in standard view
-    if (isFullPageWebsite) {
+  const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    const img = e.currentTarget;
+    if (isFullPageWebsite || (img && img.naturalHeight / img.naturalWidth > 1.6)) {
       setIsTallImage(true);
     }
   };
@@ -94,8 +98,8 @@ export const InteractiveMediaViewer: React.FC<InteractiveMediaViewerProps> = ({
 
   // If this is an interactive long sales page screenshot
   if (isTallImage) {
-    // Width calculation for readable view
-    const baseWidth = 840;
+    // Width calculation for readable zoomed-in view
+    const baseWidth = 880;
     const targetWidth = Math.round(baseWidth * zoomLevel);
 
     return (

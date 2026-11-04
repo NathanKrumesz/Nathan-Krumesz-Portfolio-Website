@@ -13,28 +13,24 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume, onOpenContact, onSelec
     <section className="pt-24 pb-8 px-3 sm:px-6 lg:px-8">
       {/* Hero Rounded Container (LearnMoss Floating Island Architecture) */}
       <div className="relative rounded-[32px] sm:rounded-[44px] lg:rounded-[48px] overflow-hidden min-h-[88vh] flex flex-col justify-between p-6 sm:p-10 lg:p-14 text-white isolation border border-white/15 shadow-[0_30px_90px_-20px_rgba(0,0,0,0.5)]">
-        {/* Organic Blurred Gradient Layer */}
+        {/* Background Image Layer */}
         <div className="hero__gradient" aria-hidden="true" />
 
-        {/* Optical Vignette & Rim Shading */}
+        {/* Soft Vignette for Text Contrast */}
         <div className="hero__vignette" aria-hidden="true" />
-
-        {/* Tactile Silver-Halide Film Grain Texture Layers */}
-        <div className="hero__grain" aria-hidden="true" />
-        <div className="hero__grain-stipple" aria-hidden="true" />
 
         {/* Top Eyebrow Section */}
         <div className="relative z-10 pt-4 sm:pt-6">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-mono uppercase tracking-wider text-white/90">
-            <span>[ DIGITAL MARKETING SPECIALIST & CREATIVE STRATEGIST ]</span>
+            <span>[ PERFORMANCE MARKETER & CREATIVE STRATEGIST ]</span>
           </div>
         </div>
 
         {/* Central Dramatic Headline & Lead */}
         <div className="relative z-10 max-w-4xl my-auto py-8">
-          <h1 className="text-4xl sm:text-6xl lg:text-[70px] font-normal tracking-[-0.03em] leading-[1.06] text-white">
+          <h1 className="text-4xl sm:text-6xl lg:text-[70px] font-semibold tracking-[-0.03em] leading-[1.06] text-white">
             Scaling DTC brands with{' '}
-            <span className="bg-black text-white px-3 sm:px-4 py-0.5 sm:py-1 font-serif italic inline-block transform -rotate-0.5 shadow-xl border border-white/15 my-1">
+            <span className="bg-black text-white px-3 sm:px-4 py-0.5 sm:py-1 font-serif italic font-light inline-block transform -rotate-0.5 shadow-xl border border-white/15 my-1">
               real-world results
             </span>{' '}
             through data & creative.

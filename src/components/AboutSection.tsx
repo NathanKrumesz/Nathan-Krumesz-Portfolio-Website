@@ -1,6 +1,6 @@
 import React from 'react';
 import { PERSONAL_INFO } from '../data/portfolioData';
-import { MapPin, Mail, Phone, GraduationCap, Award, FileText, CheckCircle2, ArrowUpRight, Linkedin, Headphones } from 'lucide-react';
+import { MapPin, Mail, GraduationCap, Award, FileText, CheckCircle2, ArrowUpRight, Linkedin, Headphones } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
 
 interface AboutSectionProps {
@@ -66,12 +66,6 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenResume, onOpen
                   <Mail className="w-4 h-4 text-black/50" />
                   <a href={`mailto:${PERSONAL_INFO.email}`} className="hover:underline font-mono">
                     {PERSONAL_INFO.email}
-                  </a>
-                </div>
-                <div className="flex items-center gap-2.5 text-black/75">
-                  <Phone className="w-4 h-4 text-black/50" />
-                  <a href={`tel:${PERSONAL_INFO.phone}`} className="hover:underline font-mono">
-                    {PERSONAL_INFO.phone}
                   </a>
                 </div>
                 <div className="flex items-center gap-2.5 text-black/75">

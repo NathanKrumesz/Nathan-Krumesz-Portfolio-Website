@@ -1,0 +1,74 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' width='1920' height='1080'>
+  <defs>
+    <!-- Background Gradients replicating the user image -->
+    <radialGradient id='blueGlow' cx='22%' cy='28%' r='65%'>
+      <stop offset='0%' stop-color='#6a70ff' stop-opacity='1'/>
+      <stop offset='35%' stop-color='#5256f3' stop-opacity='0.95'/>
+      <stop offset='70%' stop-color='#373ac9' stop-opacity='0.8'/>
+      <stop offset='100%' stop-color='#202298' stop-opacity='0.2'/>
+    </radialGradient>
+    <radialGradient id='centerDeep' cx='45%' cy='55%' r='55%'>
+      <stop offset='0%' stop-color='#4548e6' stop-opacity='0.9'/>
+      <stop offset='50%' stop-color='#3033bf' stop-opacity='0.85'/>
+      <stop offset='100%' stop-color='#1a1c78' stop-opacity='0.4'/>
+    </radialGradient>
+    <linearGradient id='shadowRight' x1='40%' y1='0%' x2='100%' y2='0%'>
+      <stop offset='0%' stop-color='#3b3ecb' stop-opacity='0'/>
+      <stop offset='45%' stop-color='#262744' stop-opacity='0.75'/>
+      <stop offset='70%' stop-color='#1b1c2e' stop-opacity='0.92'/>
+      <stop offset='100%' stop-color='#111220' stop-opacity='0.98'/>
+    </linearGradient>
+    <linearGradient id='bottomShadow' x1='0%' y1='50%' x2='0%' y2='100%'>
+      <stop offset='0%' stop-color='#000000' stop-opacity='0'/>
+      <stop offset='100%' stop-color='#0a0b16' stop-opacity='0.55'/>
+    </linearGradient>
+
+    <!-- Noise filter for photographic film grain -->
+    <filter id='noise' x='0%' y='0%' width='100%' height='100%'>
+      <feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch' result='turb'/>
+      <feColorMatrix type='matrix' values='
+        3.5 0 0 0 -1.2
+        0 3.5 0 0 -1.2
+        0 0 3.5 0 -1.2
+        0 0 0 0.85 0' result='grain'/>
+      <feBlend mode='overlay' in='SourceGraphic' in2='grain'/>
+    </filter>
+  </defs>
+
+  <!-- Base deep indigo background -->
+  <rect width='1920' height='1080' fill='#252799'/>
+
+  <!-- Left vibrant blue illumination -->
+  <rect width='1920' height='1080' fill='url(#blueGlow)'/>
+  <rect width='1920' height='1080' fill='url(#centerDeep)'/>
+
+  <!-- Right shadowy dark vertical zone -->
+  <rect width='1920' height='1080' fill='url(#shadowRight)'/>
+  <rect width='1920' height='1080' fill='url(#bottomShadow)'/>
+
+  <!-- Subtle Matrix / Binary Watermark Layer -->
+  <g fill='#ffffff' opacity='0.085' font-family='monospace' font-size='32' font-weight='500' letter-spacing='8'>
+  <text x='-40' y='65'>01010100 01100101 01110011 01110100 01101001 01101110 01100111 01010100 01100101 01110011 01110100 01101001 01101110 01100111</text>
+  <text x='-40' y='123'>01000011 01110010 01100101 01100001 01110100 01101001 01110110 01000011 01110010 01100101 01100001 01110100 01101001 01110110</text>
+  <text x='-40' y='181'>01010011 01110100 01110010 01100001 01110100 01100101 01100111 01010011 01110100 01110010 01100001 01110100 01100101 01100111</text>
+  <text x='-40' y='239'>01000111 01110010 01101111 01110111 01110100 01101000 00100000 01000111 01110010 01101111 01110111 01110100 01101000 00100000</text>
+  <text x='-40' y='297'>01010010 01101111 01100001 01110011 00100000 00110010 00111001 01010010 01101111 01100001 01110011 00100000 00110010 00111001</text>
+  <text x='-40' y='355'>01000100 01100001 01110100 01100001 00100000 01000100 01110010 01000100 01100001 01110100 01100001 00100000 01000100 01110010</text>
+  <text x='-40' y='413'>01010011 01100011 01100001 01101100 01101001 01101110 01100111 01010011 01100011 01100001 01101100 01101001 01101110 01100111</text>
+  <text x='-40' y='471'>01001111 01100110 01100110 01100101 01110010 00100000 01000001 01001111 01100110 01100110 01100101 01110010 00100000 01000001</text>
+  <text x='-40' y='529'>01000110 01110101 01101110 01101110 01100101 01101100 01110011 01000110 01110101 01101110 01101110 01100101 01101100 01110011</text>
+  <text x='-40' y='587'>01010000 01100101 01110010 01100110 01101111 01110010 01101101 01010000 01100101 01110010 01100110 01101111 01110010 01101101</text>
+  <text x='-40' y='645'>01000001 01110101 01100100 01101001 01100101 01101110 01100011 01000001 01110101 01100100 01101001 01100101 01101110 01100011</text>
+  <text x='-40' y='703'>01001101 01100101 01110100 01110010 01101001 01100011 01110011 01001101 01100101 01110100 01110010 01101001 01100011 01110011</text>
+  <text x='-40' y='761'>01010110 01101001 01110010 01100001 01101100 00100000 01000011 01010110 01101001 01110010 01100001 01101100 00100000 01000011</text>
+  <text x='-40' y='819'>01000011 01101111 01101110 01110110 01100101 01110010 01110011 01000011 01101111 01101110 01110110 01100101 01110010 01110011</text>
+  <text x='-40' y='877'>01010010 01100101 01110100 01100101 01101110 01110100 01101001 01010010 01100101 01110100 01100101 01101110 01110100 01101001</text>
+  <text x='-40' y='935'>01000001 01100011 01110001 01110101 01101001 01110011 01101001 01000001 01100011 01110001 01110101 01101001 01110011 01101001</text>
+  <text x='-40' y='993'>01001111 01110000 01110100 01101001 01101101 01101001 01111010 01001111 01110000 01110100 01101001 01101101 01101001 01111010</text>
+  <text x='-40' y='1051'>01010010 01100101 01110011 01110101 01101100 01110100 01110011 01010010 01100101 01110011 01110101 01101100 01110100 01110011</text>
+  </g>
+
+  <!-- Surface Texture Filter Overlay -->
+  <rect width='1920' height='1080' fill='#808080' filter='url(#noise)' mix-blend-mode='overlay' opacity='0.62'/>
+  <rect width='1920' height='1080' fill='#808080' filter='url(#noise)' mix-blend-mode='soft-light' opacity='0.45'/>
+</svg>

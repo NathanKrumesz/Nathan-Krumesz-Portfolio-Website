@@ -89,7 +89,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenContact 
   ];
 
   return (
-    <section id="services" className="py-20 sm:py-28 bg-[#F7F7F6] section--grid border-b border-black/5">
+    <section id="skills" className="py-20 sm:py-28 bg-[#F7F7F6] section--grid border-b border-black/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* DOE Header Pattern */}
         <ScrollReveal className="max-w-3xl">
