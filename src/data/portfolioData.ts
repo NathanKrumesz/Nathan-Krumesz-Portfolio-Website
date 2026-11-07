@@ -165,7 +165,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       { label: "AOV Growth", value: "2x" },
       { label: "Baseline AOV", value: "$90" },
       { label: "Optimized AOV", value: "$180" },
-      { label: "Agency Beat", value: "Top Performer" }
+      { label: "Agency Beat", value: "#1 Ad" }
     ],
     doeStats: [
       { label: "AOV EXPANSION", value: "2x" },
@@ -264,15 +264,15 @@ export const CASE_STUDIES: CaseStudy[] = [
     barGradient: "from-purple-500 via-pink-400 to-purple-600",
     accent: "purple",
     stats: [
-      { label: "Funnel Build", value: "100%" },
-      { label: "Upsell Flow", value: "Multi-Tier" },
-      { label: "Sales Script", value: "Direct Response" },
-      { label: "Email Retention", value: "Automated" }
+      { label: "Peak ROAS", value: "7.4x" },
+      { label: "AOV Growth", value: "+32%" },
+      { label: "Ad Suite", value: "9 Creatives" },
+      { label: "Funnel Build", value: "100%" }
     ],
     doeStats: [
-      { label: "CAMPAIGN ARCHITECTURE", value: "100%" },
-      { label: "VIDEO SALES LETTER", value: "Direct Response" },
-      { label: "OFFER CREATION", value: "Multi-Step" }
+      { label: "PEAK ROAS", value: "7.4x" },
+      { label: "AOV EXPANSION", value: "+32%" },
+      { label: "AD CREATIVE SUITE", value: "9 Angles" }
     ],
     problem: "The brand struggled with single-item purchasing habits on static Shopify pages that left cart value too low to scale customer acquisition on competitive social ad channels.",
     solution: "1. Conceptualized and launched a high-perceived-value 'Detox & Balance' multi-product bundle offer with custom landing page design.\n2. Wrote direct response video sales presentation scripts structured around hook-hold-payoff principles for Meta and TikTok.\n3. Designed 9:16 vertical demonstration video ads and creative assets showcasing the unique bar lather and natural ingredients.\n4. Deployed automated abandoned cart email sequences with targeted promotions to recover lost shoppers.",

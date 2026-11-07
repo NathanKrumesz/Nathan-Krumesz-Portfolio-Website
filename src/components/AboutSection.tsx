@@ -62,30 +62,30 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenResume, onOpen
                   <MapPin className="w-4 h-4 text-black/50" />
                   <span>Toronto, Ontario, Canada</span>
                 </div>
-                <div className="flex items-center gap-2.5 text-black/75">
-                  <Mail className="w-4 h-4 text-black/50" />
-                  <a href={`mailto:${PERSONAL_INFO.email}`} className="hover:underline font-mono">
+                <div className="flex items-center gap-2.5 text-black/75 min-w-0">
+                  <Mail className="w-4 h-4 text-black/50 shrink-0" />
+                  <a href={`mailto:${PERSONAL_INFO.email}`} className="hover:underline font-mono break-all">
                     {PERSONAL_INFO.email}
                   </a>
                 </div>
-                <div className="flex items-center gap-2.5 text-black/75">
-                  <Linkedin className="w-4 h-4 text-black/50" />
+                <div className="flex items-center gap-2.5 text-black/75 min-w-0">
+                  <Linkedin className="w-4 h-4 text-black/50 shrink-0" />
                   <a
                     href={PERSONAL_INFO.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:underline font-mono"
+                    className="hover:underline font-mono break-all"
                   >
                     {PERSONAL_INFO.linkedinHandle}
                   </a>
                 </div>
-                <div className="flex items-center gap-2.5 text-black/75">
-                  <Headphones className="w-4 h-4 text-emerald-600" />
+                <div className="flex items-center gap-2.5 text-black/75 min-w-0">
+                  <Headphones className="w-4 h-4 text-emerald-600 shrink-0" />
                   <a
                     href={PERSONAL_INFO.spotifyPodcast.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:underline font-mono"
+                    className="hover:underline font-mono truncate"
                   >
                     Spotify: {PERSONAL_INFO.spotifyPodcast.showName}
                   </a>

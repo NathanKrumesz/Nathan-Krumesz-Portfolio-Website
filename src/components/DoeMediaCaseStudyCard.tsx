@@ -347,23 +347,31 @@ export const DoeMediaCaseStudyCard: React.FC<DoeMediaCaseStudyCardProps> = ({
 
             {/* Ohio-Style Counter Metric Grid (Doe Media Animated Stats) */}
             <div className="w-full grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 mb-8">
-              {study.stats.map((stat, sIdx) => (
-                <div
-                  key={sIdx}
-                  className="bg-white/5 border border-white/10 rounded-2xl p-3 sm:p-3.5 text-center transition-all duration-200 hover:bg-white/10 hover:border-white/20"
-                >
-                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-white">
-                    <AnimatedCounter
-                      value={stat.value}
-                      trigger={isInView}
-                      duration={1200 + sIdx * 100}
-                    />
+              {study.stats.map((stat, sIdx) => {
+                const val = stat.value || '';
+                const fontClass = val.length > 9
+                  ? 'text-xs sm:text-sm font-bold'
+                  : val.length > 6
+                  ? 'text-sm sm:text-base lg:text-xl font-bold'
+                  : 'text-base sm:text-2xl lg:text-3xl font-bold';
+                return (
+                  <div
+                    key={sIdx}
+                    className="bg-white/5 border border-white/10 rounded-2xl p-2.5 sm:p-3.5 text-center transition-all duration-200 hover:bg-white/10 hover:border-white/20 flex flex-col justify-between items-center min-w-0 overflow-hidden"
+                  >
+                    <div className={`${fontClass} tracking-tight text-white leading-tight break-words max-w-full my-auto`}>
+                      <AnimatedCounter
+                        value={stat.value}
+                        trigger={isInView}
+                        duration={1200 + sIdx * 100}
+                      />
+                    </div>
+                    <div className="text-[10px] sm:text-[11px] text-white/55 font-mono uppercase tracking-wider mt-1.5 leading-tight truncate w-full">
+                      {stat.label}
+                    </div>
                   </div>
-                  <div className="text-[10px] sm:text-[11px] text-white/55 font-mono uppercase tracking-wider mt-1 leading-tight">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             {/* Strategic Tags Row */}

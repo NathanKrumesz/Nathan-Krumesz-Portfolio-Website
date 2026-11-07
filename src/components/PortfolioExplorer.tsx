@@ -427,16 +427,16 @@ export const PortfolioExplorer: React.FC = () => {
                 {selectedPiece.description}
               </p>
 
-              <div className="bg-[#F7F7F6] rounded-2xl p-4 border border-black/5 mb-6 text-xs text-black/75 space-y-2">
-                <div className="flex items-center justify-between">
+              <div className="bg-[#F7F7F6] rounded-2xl p-4 border border-black/5 mb-6 text-xs text-black/75 space-y-2.5">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
                   <span className="text-black/50">Campaign Objective:</span>
                   <span className="font-semibold text-black">Direct Response & Verified Revenue Growth</span>
                 </div>
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
                   <span className="text-black/50">Creative Strategy:</span>
                   <span className="font-semibold text-black">High-Retention Hooks, Clear Offer Psychology & CRO</span>
                 </div>
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
                   <span className="text-black/50">Asset Format:</span>
                   <span className="font-semibold text-black">{selectedPiece.type}</span>
                 </div>

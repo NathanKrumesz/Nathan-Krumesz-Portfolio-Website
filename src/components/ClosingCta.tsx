@@ -99,7 +99,7 @@ export const ClosingCta: React.FC<ClosingCtaProps> = ({ onOpenResume }) => {
               <div
                 className="calendly-inline-widget"
                 data-url="https://calendly.com/nathan-krumesz/marketing-job-interview"
-                style={{ minWidth: '320px', height: '700px', width: '100%' }}
+                style={{ minWidth: '100%', height: '700px', width: '100%' }}
               />
             </div>
 

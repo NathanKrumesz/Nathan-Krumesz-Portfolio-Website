@@ -34,7 +34,7 @@ export const ProofStrip: React.FC = () => {
             <ScrollReveal
               key={idx}
               delay={idx * 50}
-              className="bg-[#F7F7F6] hover:bg-[#EFEFEE] transition-all duration-300 rounded-2xl p-5 sm:p-6 border border-black/5 flex flex-col justify-between group hover:-translate-y-1 min-w-0 overflow-hidden"
+              className="bg-[#F7F7F6] hover:bg-[#EFEFEE] transition-all duration-300 rounded-2xl p-4 sm:p-6 border border-black/5 flex flex-col justify-between group hover:-translate-y-1 min-w-0 overflow-hidden col-span-1 last:col-span-2 md:last:col-span-1"
             >
               <div className="min-w-0">
                 <span className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#0A0A0A] block group-hover:text-black truncate">

@@ -145,17 +145,28 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ caseStudy, onClo
           </div>
 
           {/* Stats Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-            {caseStudy.stats.map((s, idx) => (
-              <div key={idx} className="bg-white/5 border border-white/10 rounded-2xl p-4 text-center">
-                <span className="text-2xl sm:text-3xl font-bold text-white block">
-                  {s.value}
-                </span>
-                <span className="text-[11px] font-mono text-white/60 uppercase tracking-wider mt-1 block">
-                  {s.label}
-                </span>
-              </div>
-            ))}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4">
+            {caseStudy.stats.map((s, idx) => {
+              const val = s.value || '';
+              const fontClass = val.length > 9
+                ? 'text-xs sm:text-sm font-bold'
+                : val.length > 6
+                ? 'text-sm sm:text-lg lg:text-xl font-bold'
+                : 'text-lg sm:text-2xl lg:text-3xl font-bold';
+              return (
+                <div
+                  key={idx}
+                  className="bg-white/5 border border-white/10 rounded-2xl p-3 sm:p-4 text-center flex flex-col justify-between items-center min-w-0 overflow-hidden"
+                >
+                  <span className={`${fontClass} text-white block leading-tight break-words max-w-full my-auto`}>
+                    {s.value}
+                  </span>
+                  <span className="text-[10px] sm:text-[11px] font-mono text-white/60 uppercase tracking-wider mt-1.5 block truncate w-full">
+                    {s.label}
+                  </span>
+                </div>
+              );
+            })}
           </div>
 
           {/* Problem & Strategic Solution */}
