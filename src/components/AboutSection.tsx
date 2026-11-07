@@ -18,7 +18,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenResume, onOpen
             <ScrollReveal className="sticky top-28">
               <div className="relative rounded-3xl overflow-hidden border border-black/10 shadow-lg bg-black aspect-square max-w-md mx-auto lg:max-w-none">
                 <img
-                  src="/src/assets/images/nathan-black-hoodie.png"
+                  src="/images/nathan-black-hoodie.png"
                   alt="Nathan Krumesz"
                   className="w-full h-full object-cover object-top"
                 />
