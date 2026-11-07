@@ -20,15 +20,15 @@ export const InteractiveMediaViewer: React.FC<InteractiveMediaViewerProps> = ({
   const [isFitMode, setIsFitMode] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Strictly restrict scroll effect to full page website screenshots only
+  // Strictly restrict scroll effect to full-length sales page screenshots only
+  const cleanSrc = src.toLowerCase();
   const isFullPageWebsite =
-    src.toLowerCase().includes('sales-page') ||
-    src.toLowerCase().includes('full-sales') ||
-    src.toLowerCase().includes('kalaia-detox-bar') ||
-    src.toLowerCase().includes('detox-bar') ||
-    src.toLowerCase().includes('kalaia') && src.toLowerCase().includes('bar') ||
-    src.toLowerCase().includes('funnel') ||
-    src.toLowerCase().includes('touch-heal');
+    !isVideo &&
+    (cleanSrc.endsWith('mighti-sales-page.jpg') ||
+     cleanSrc.endsWith('petsmont-sales-page.jpg') ||
+     cleanSrc.endsWith('kalaia-detox-bar-v2.png') ||
+     (cleanSrc.includes('sales-page') && !cleanSrc.includes('-top')) ||
+     cleanSrc.includes('full-sales-page'));
 
   useEffect(() => {
     setScrollProgress(0);
@@ -37,11 +37,9 @@ export const InteractiveMediaViewer: React.FC<InteractiveMediaViewerProps> = ({
     setIsTallImage(isFullPageWebsite);
   }, [src, isFullPageWebsite]);
 
-  const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
-    const img = e.currentTarget;
-    if (isFullPageWebsite || (img && img.naturalHeight / img.naturalWidth > 1.6)) {
-      setIsTallImage(true);
-    }
+  const handleImageLoad = () => {
+    // Only full-length sales page screenshots qualify for the interactive viewer
+    setIsTallImage(isFullPageWebsite);
   };
 
   const handleScroll = () => {

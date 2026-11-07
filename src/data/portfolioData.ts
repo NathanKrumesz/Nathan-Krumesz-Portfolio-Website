@@ -61,6 +61,7 @@ export interface PortfolioPiece {
   videoUrl?: string;
   type: string;
   galleryImages?: string[];
+  galleryCaptions?: string[];
   externalUrl?: string;
   externalUrlLabel?: string;
 }
@@ -87,13 +88,15 @@ export const PERSONAL_INFO = {
   linkedin: "https://linkedin.com/in/nathankrumesz",
   linkedinHandle: "linkedin.com/in/nathankrumesz",
   spotifyPodcast: {
-    title: "SaaS Growth Secrets with Nathan Krumesz",
-    showName: "SaaS Growth Secrets",
+    title: "The Performance Playbook",
+    showName: "The Performance Playbook",
     url: "https://open.spotify.com/show/0uvYSFwog366kyHsrmFZ3D?si=cd69d48bf2d74df9",
     episodes: 70,
     coverArt: "/portfolio/podcast-cover.jpg",
     rating: "5.0 ★",
-    description: "Documenting practical takeaways, webinar sales scripts, funnel hacking epiphanies, and conversion frameworks learned while scaling high-growth SaaS and e-commerce companies."
+    topic: "Paid Ads & Business Math",
+    description: "Most marketing advice is theory taught by people who don't spend real money on growth. The Performance Playbook is the opposite. Every episode, performance marketer Nathan Krumesz breaks down the exact inputs required to scale direct response ads, sales funnels, and viral frameworks that generate real revenue.",
+    fullDescription: "Most marketing advice is theory taught by people who don't spend real money on growth. The Performance Playbook is the opposite. Every episode, performance marketer and creative strategist Nathan Krumesz breaks down the exact inputs required to scale: high-converting direct response video ads, multi-tier sales funnels, and organic viral content frameworks that generate real revenue. The formula is simple: Make better creative, build higher-converting backend funnels, out-execute everyone else. If you want motivation, listen to someone else."
   },
   summary: "Results-driven Digital Marketing Specialist with 5+ years of experience driving measurable growth for DTC and B2B brands. Proven track record scaling social media audiences to 60,000+ organic followers, including $1M+ in revenue growth achieved for one business, and producing creative content reaching millions of users. Skilled across the full funnel — paid social advertising, email marketing, conversion rate optimization, and organic content strategy.",
   stats: [
@@ -144,15 +147,15 @@ export const CASE_STUDIES: CaseStudy[] = [
     role: "Digital Marketing Specialist (Freelance)",
     timeline: "Feb 2023 – Jul 2024",
     image: "/src/assets/images/case-mighti.jpg",
-    videoUrl: "/videos/mighti-sales-vsl.mp4",
-    videoRemote: "https://r2-origin.submagic.pro/9d1b83c5-cc7b-4486-b35d-d4078e33af08/x0ygzRZemEeBrEd2LHf69/pw-sales-video-1mov",
+    videoUrl: "https://r2-origin.submagic.pro/9d1b83c5-cc7b-4486-b35d-d4078e33af08/x0ygzRZemEeBrEd2LHf69/pw-sales-video-1mov-download-1793033245846.mp4",
+    videoRemote: "https://r2-origin.submagic.pro/9d1b83c5-cc7b-4486-b35d-d4078e33af08/x0ygzRZemEeBrEd2LHf69/pw-sales-video-1mov-download-1793033245846.mp4",
     videoTitle: "Mighty Fungi 'Level Up' Direct Response Sales Video (VSL)",
     videoPoster: "/portfolio/video-thumbs/mighti-submagic-poster.jpg",
     secondaryVideoUrl: "/videos/mighti-lvl-up-person.mp4",
     secondaryVideoTitle: "Mighti 'If Level Up Was A Person' Creative Video Ad",
     secondaryVideoPoster: "/portfolio/video-thumbs/mighti-lvl-up-person-frame.jpg",
     leftVideo: "/videos/mighti-submagic-card.mp4",
-    leftVideoRemote: "https://r2-origin.submagic.pro/9d1b83c5-cc7b-4486-b35d-d4078e33af08/x0ygzRZemEeBrEd2LHf69/pw-sales-video-1mov",
+    leftVideoRemote: "https://r2-origin.submagic.pro/9d1b83c5-cc7b-4486-b35d-d4078e33af08/x0ygzRZemEeBrEd2LHf69/pw-sales-video-1mov-download-1793033245846.mp4",
     leftImage: "/portfolio/video-thumbs/mighti-submagic-poster.jpg",
     rightImage: "/portfolio/mighti-sales-page-top.jpg",
     glowColor: "rgba(16, 185, 129, 0.22)",
@@ -471,18 +474,68 @@ export const CASE_STUDIES: CaseStudy[] = [
 ];
 
 export const PORTFOLIO_PIECES: PortfolioPiece[] = [
-  // --- VIDEO ADS & VSLs WITH STATS ---
+  // ==========================================
+  // 1. VIDEO ADS & DIRECT RESPONSE VSLs
+  // ==========================================
   {
     id: "piece-vsl-mighti",
     title: "Mighti 'Level Up' Full Video Sales Letter (VSL)",
     category: "video-ads",
-    brand: "Mighti",
+    brand: "Mighti Fungi",
     platform: "ClickFunnels Sales Funnel",
     metricHighlight: "Doubled AOV $90 → $180 • #1 Brand Ad",
     description: "Complete direct response Video Sales Letter (VSL) scripted, conceptualized, and produced for Mighti's 'Level Up' nootropic supplement. Outperformed dedicated third-party agency creative.",
     imagePlaceholder: "/portfolio/video-thumbs/mighti-submagic-poster.jpg",
-    videoUrl: "/videos/mighti-sales-vsl.mp4",
+    videoUrl: "https://r2-origin.submagic.pro/9d1b83c5-cc7b-4486-b35d-d4078e33af08/x0ygzRZemEeBrEd2LHf69/pw-sales-video-1mov-download-1793033245846.mp4",
     type: "Full Direct Response Video Sales Letter"
+  },
+  {
+    id: "piece-vid-mighti-person",
+    title: "Mighti 'If Level Up Was A Person' Creative Video Ad",
+    category: "video-ads",
+    brand: "Mighti Fungi",
+    platform: "Meta & TikTok Feeds",
+    metricHighlight: "Viral Persona Angle • High Retention",
+    description: "Creative direct response video ad humanizing the adaptogenic benefits of Level Up. High scroll-stopping hook built to capture top-of-funnel TikTok and Instagram attention.",
+    imagePlaceholder: "/portfolio/video-thumbs/mighti-lvl-up-person-frame.jpg",
+    videoUrl: "/videos/mighti-lvl-up-person.mp4",
+    type: "Short-Form Video Ad"
+  },
+  {
+    id: "piece-vid-mighti-notes",
+    title: "Mighti 'iPhone Notes App Confession' Pattern-Interrupt Video",
+    category: "video-ads",
+    brand: "Mighti Fungi",
+    platform: "Meta Ads & TikTok",
+    metricHighlight: "Native Feed Interrupt • High Hook Rate",
+    description: "Ultra-native UGC pattern-interrupt video styled as an authentic personal iPhone Notes confession, achieving peak 3-second hook retention and eliminating ad fatigue.",
+    imagePlaceholder: "/portfolio/video-thumbs/mighti-iphone-notes-frame.jpg",
+    videoUrl: "/videos/mighti-iphone-notes.mp4",
+    type: "Pattern-Interrupt Video Creative"
+  },
+  {
+    id: "piece-vsl-kalaia",
+    title: "Kalaia Detox & Balance Social Reel Video Ad",
+    category: "video-ads",
+    brand: "Kalaia Skincare",
+    platform: "Meta & TikTok Reels",
+    metricHighlight: "Core Sales Video • Multi-Tier Upsells",
+    description: "Full direct-response video sales presentation and demonstration creative scripted and produced for Kalaia's flagship Detox & Balance Cleansing Bar. Anchored the customer acquisition funnel and multi-product checkout flow.",
+    imagePlaceholder: "/portfolio/video-thumbs/kalaia-reel-poster.jpg",
+    videoUrl: "https://r2-origin.submagic.pro/9d1b83c5-cc7b-4486-b35d-d4078e33af08/Vtl12sLoFd81r6f6k547O/kalaia-reelmp4-download-1792178164555.mp4",
+    type: "Direct Response Video Reel"
+  },
+  {
+    id: "piece-vid-kalaia-demo",
+    title: "Kalaia 'How To Use Detox Bar' Ritual & Demonstration Video",
+    category: "video-ads",
+    brand: "Kalaia Skincare",
+    platform: "TikTok & Meta Reels (9:16)",
+    metricHighlight: "Sensory Product Demo • 9:16 Video",
+    description: "Sensory-rich step-by-step product demonstration video showcasing the luxurious charcoal and clay lather and gentle exfoliating ritual for clearer skin.",
+    imagePlaceholder: "/portfolio/video-thumbs/kalaia-how-to-use-frame.jpg",
+    videoUrl: "/videos/kalaia-how-to-use.mp4",
+    type: "Vertical Product Ritual Demonstration"
   },
   {
     id: "piece-vsl-petsmont",
@@ -505,29 +558,218 @@ export const PORTFOLIO_PIECES: PortfolioPiece[] = [
     metricHighlight: "+$20K/Mo in 60 Days • 100k+ Views",
     description: "Conceptualized and ran a local direct-response video ad across the Greater Toronto Area that went viral organically, scaling fresh meal subscription revenue from $0 to $20,000/month.",
     imagePlaceholder: "/portfolio/video-thumbs/halal-meals-ad-frame.jpg",
-    videoUrl: "/videos/halal-meals-ad.mp4",
+    videoUrl: "https://r2-origin.submagic.pro/9d1b83c5-cc7b-4486-b35d-d4078e33af08/ManGXXpbifAvSuNj-GydP/halalmeals-video-admp4-download-1793906099288.mp4",
     type: "Viral Direct Response Video Ad"
   },
+  {
+    id: "piece-vid-faith-quotes",
+    title: "Viral Motion Quotes Reel: Faith & Direct Response Pacing",
+    category: "video-ads",
+    brand: "Christian Media",
+    platform: "Instagram Reels & YouTube Shorts",
+    metricHighlight: "High Organic Retention & Viral Reach",
+    description: "Direct-response typography and cinematic motion pacing applied to short-form video quotes, maximizing organic reach and algorithm watch time.",
+    imagePlaceholder: "/portfolio/video-thumbs/orthodox-christian-quote-frame.jpg",
+    videoUrl: "/videos/orthodox-christian-quote.mp4",
+    type: "Viral Motion Typography Reel"
+  },
 
-  // --- PAID SOCIAL CREATIVES WITH EMPIRICAL BENCHMARKS ---
+  // ==========================================
+  // 2. PAID SOCIAL CREATIVES: MIGHTI FUNGI
+  // ==========================================
   {
     id: "piece-mighti-brainfog",
     title: "Mighti 'Clear Brain Fog in 15 Min' Static Ad",
     category: "paid-social",
-    brand: "Mighti",
+    brand: "Mighti Fungi",
     platform: "Meta Ads (IG & FB)",
-    metricHighlight: "#1 Best Performing Ad in Brand History (2x AOV)",
-    description: "Direct-response problem-aware ad visual targeting mental fatigue. The founder confirmed this ad was the best performing in company history, beating their external agency.",
+    metricHighlight: "#1 Best Performing Ad (2x AOV)",
+    description: "Direct-response problem-aware ad visual targeting mental fatigue. The founder confirmed this ad was the single best-performing creative in company history, beating their external agency.",
     imagePlaceholder: "/portfolio/mighti-brain-fog.png",
     type: "Direct Response Feed Ad Creative"
   },
+  {
+    id: "piece-mighti-booster",
+    title: "Mighti 'The #1 Brain Booster of 2024' Authority Ad",
+    category: "paid-social",
+    brand: "Mighti Fungi",
+    platform: "Meta Ads (Feed & Stories)",
+    metricHighlight: "High Authority Hook • Low CPA",
+    description: "High-intent positioning creative contrasting 20 active adaptogens against afternoon caffeine crashes and synthetic energy drinks.",
+    imagePlaceholder: "/portfolio/mighti-brain-booster.png",
+    type: "Authority Positioning Ad"
+  },
+  {
+    id: "piece-mighti-oldnew",
+    title: "Mighti 'Old Me vs New Me' Transformation Creative",
+    category: "paid-social",
+    brand: "Mighti Fungi",
+    platform: "Meta Ads (IG Feed)",
+    metricHighlight: "Comparative A/B Angle • High ROAS",
+    description: "Split-awareness comparative ad visual highlighting the daily productivity difference between an unfocused morning slump vs sharp cognitive flow.",
+    imagePlaceholder: "/portfolio/mighti-old-vs-new.png",
+    type: "Split-Awareness Comparative Ad"
+  },
+  {
+    id: "piece-mighti-texts",
+    title: "Mighti Native iMessage Chat Pattern-Interrupt Ad",
+    category: "paid-social",
+    brand: "Mighti Fungi",
+    platform: "Meta & TikTok Feeds",
+    metricHighlight: "Top Scroll-Stopping Rate",
+    description: "Ultra-native chat format that broke feed blindness with an authentic conversation between 'Your Brain' and 'You' at 2:30 PM.",
+    imagePlaceholder: "/portfolio/mighti-brain-texts.png",
+    type: "Native Pattern-Interrupt Ad"
+  },
+  {
+    id: "piece-mighti-3cat",
+    title: "Mighti '3 Categories of Brain Supplements' Educational Breakdown",
+    category: "paid-social",
+    brand: "Mighti Fungi",
+    platform: "Meta Ads Feed & Carousel",
+    metricHighlight: "Market Education Angle",
+    description: "Visual market categorization positioning adaptogenic mushrooms above generic caffeine pills and crash-inducing synthetic stimulants.",
+    imagePlaceholder: "/portfolio/mighti-3-categories.png",
+    type: "Educational Market Categorization Ad"
+  },
+  {
+    id: "piece-mighti-review",
+    title: "Mighti '1-Star Review of Coffee' Reverse Psychology Ad",
+    category: "paid-social",
+    brand: "Mighti Fungi",
+    platform: "Instagram & Facebook Feeds",
+    metricHighlight: "Reverse Psychology Hook",
+    description: "High-CTR pattern-interrupt creative featuring a verified review detailing the mid-day jitters and crashes caused by conventional energy drinks.",
+    imagePlaceholder: "/portfolio/mighti-one-star-review.png",
+    type: "Reverse Psychology Testimonial Ad"
+  },
+  {
+    id: "piece-mighti-whiteboard",
+    title: "Mighti 'Whiteboard Formula Breakdown' Mechanism Ad",
+    category: "paid-social",
+    brand: "Mighti Fungi",
+    platform: "Meta Ads Feed",
+    metricHighlight: "Mechanism Transparency Hook",
+    description: "Hand-drawn style whiteboard breakdown detailing the science of Lion's Mane, Cordyceps, and Chaga mushroom synergies for sustained ATP energy.",
+    imagePlaceholder: "/portfolio/mighti-whiteboard.png",
+    type: "Formula Mechanism Breakdown"
+  },
+  {
+    id: "piece-mighti-willpower",
+    title: "Mighti 'Willpower vs Biology' Reframe Ad",
+    category: "paid-social",
+    brand: "Mighti Fungi",
+    platform: "Meta Ads",
+    metricHighlight: "Psychological Reframe Angle",
+    description: "Reframing afternoon fatigue as a biological nutrient deficit rather than a willpower failure to unlock direct response purchasing intent.",
+    imagePlaceholder: "/portfolio/mighti-willpower.png",
+    type: "Direct Response Reframe Creative"
+  },
+  {
+    id: "piece-mighti-struggles",
+    title: "Mighti 'Midday Energy Struggles' Problem-Agitation Ad",
+    category: "paid-social",
+    brand: "Mighti Fungi",
+    platform: "Meta Ads",
+    metricHighlight: "Problem-Agitation Hook",
+    description: "Empathetic problem-agitation creative illustrating the 2 PM energy slump that entrepreneurs and professionals face daily.",
+    imagePlaceholder: "/portfolio/mighti-struggles.png",
+    type: "Problem-Agitation Feed Ad"
+  },
+  {
+    id: "piece-mighti-supercharge",
+    title: "Mighti 'Supercharge Your Focus' Benefit Grid",
+    category: "paid-social",
+    brand: "Mighti Fungi",
+    platform: "Meta Ads",
+    metricHighlight: "Feature-Benefit Mapping",
+    description: "Clean benefit mapping illustrating sustained memory, clean alertness, and zero crash from adaptogenic nootropics.",
+    imagePlaceholder: "/portfolio/mighti-supercharge.png",
+    type: "Feature-Benefit Grid Creative"
+  },
+  {
+    id: "piece-mighti-meme",
+    title: "Mighti Native Social Meme Pattern-Interrupt Ad",
+    category: "paid-social",
+    brand: "Mighti Fungi",
+    platform: "Instagram & Twitter/X",
+    metricHighlight: "Native Meme Format • Viral CTR",
+    description: "Culturally native meme-style ad format engineered to blend seamlessly into user feeds while driving cold clicks.",
+    imagePlaceholder: "/portfolio/mighti-meme-ad.jpg",
+    type: "Native Social Meme Format"
+  },
 
-  // --- FUNNELS & CRO ARCHITECTURES WITH VERIFIED STATS ---
+  // ==========================================
+  // 3. PAID SOCIAL CREATIVES: KALAIA SKINCARE
+  // (Consolidated 9-Creative Suite Card)
+  // ==========================================
+  {
+    id: "piece-kalaia-ads-suite",
+    title: "Kalaia Detox & Balance: 9-Piece Paid Social Creative Suite",
+    category: "paid-social",
+    brand: "Kalaia Skincare",
+    platform: "Meta & TikTok Ads (Feed & Stories)",
+    metricHighlight: "9 Multi-Angle Creatives • 32% AOV Boost",
+    description: "Complete 9-piece direct response paid social creative suite designed for Kalaia's Detox & Balance Cleansing Bar. Spans promotional bundle offers, tropical botanical mechanism breakdowns, clinical trust badges, social proof, acne comparison charts, papain enzyme infographics, interactive skin quiz, and daily ritual angles.",
+    imagePlaceholder: "/portfolio/kalaia-ads/3.png",
+    galleryImages: [
+      "/portfolio/kalaia-ads/3.png",
+      "/portfolio/kalaia-ads/1.png",
+      "/portfolio/kalaia-ads/2.png",
+      "/portfolio/kalaia-ads/4.png",
+      "/portfolio/kalaia-ads/5.png",
+      "/portfolio/kalaia-ads/6.png",
+      "/portfolio/kalaia-ads/7.png",
+      "/portfolio/kalaia-ads/8.png",
+      "/portfolio/kalaia-ads/9.png"
+    ],
+    galleryCaptions: [
+      "Ad #1: 30% Off Bundle Offer + 2 Free Bamboo Trays (Top Converting Offer)",
+      "Ad #2: 3-Tier Botanical Active Ingredients Breakdown (Mechanism Storytelling)",
+      "Ad #3: Chemical-Free Trust Badges & Clinical Purity (Friction Elimination)",
+      "Ad #4: Verified Customer Endorsement & Proof (Social Proof)",
+      "Ad #5: Acne & Blemish Face-to-Face Comparison (Problem-Aware)",
+      "Ad #6: #SkincareFact Papain Enzyme Exfoliation (Authority Infographic)",
+      "Ad #7: Interactive Skin Type Self-Assessment Quiz (High CTR)",
+      "Ad #8: Daily Morning & Evening Cleansing Ritual (Lifestyle Integration)",
+      "Ad #9: Bamboo Charcoal & Pure Clay Deep Pore Cleanser (Sensory Hook)"
+    ],
+    type: "9-Creative Paid Social Ad Suite"
+  },
+
+  // ==========================================
+  // 4. PAID SOCIAL CREATIVES: PETSMONT
+  // ==========================================
+  {
+    id: "piece-petsmont-creatives",
+    title: "Petsmont Canine Paw Care: Direct Response Ad Creatives",
+    category: "paid-social",
+    brand: "Petsmont",
+    platform: "Meta Ads (IG & FB)",
+    metricHighlight: "Problem-Solution & Trust Angle",
+    description: "Direct response comparative and ingredient transparency ad suite educating pet owners on the hazards of chemical-laden paw balms vs lick-safe, 100% human-grade organic waxes.",
+    imagePlaceholder: "/portfolio/petsmont/received_2116438681869121.jpeg",
+    galleryImages: [
+      "/portfolio/petsmont/received_2116438681869121.jpeg",
+      "/portfolio/petsmont/received_380447327608275.jpeg",
+      "/portfolio/petsmont/received_782365896146558.jpeg"
+    ],
+    galleryCaptions: [
+      "Ad #1: Veterinary Problem-Solution Comparison (Direct Response)",
+      "Ad #2: 100% Organic Ingredient Transparency & Lick-Safe Badges",
+      "Ad #3: Canine Paw Care Benefit Callouts & Winter Protection"
+    ],
+    type: "Multi-Angle Paid Social Suite"
+  },
+
+  // ==========================================
+  // 5. FUNNELS & CRO ARCHITECTURES
+  // ==========================================
   {
     id: "piece-funnel-mighti",
     title: "Mighti 'Level Up' Long-Form DTC Sales Funnel",
     category: "funnel-cro",
-    brand: "Mighti",
+    brand: "Mighti Fungi",
     platform: "ClickFunnels & DTC E-Commerce",
     metricHighlight: "2x AOV Lift • $180 Peak Cart Value",
     description: "Complete full-length ClickFunnels sales page and upsell architecture engineered for Mighti's 'Level Up' nootropic supplement. Features direct response avatar copywriting, competitive breakdown, clinical ingredients, customer proof, and one-time offer checkout sequences.",
@@ -536,7 +778,32 @@ export const PORTFOLIO_PIECES: PortfolioPiece[] = [
       "/portfolio/mighti-funnel-mocks.png",
       "/portfolio/mighti-sales-page.jpg"
     ],
+    galleryCaptions: [
+      "ClickFunnels Multi-Step Wireframe & Upsell Sequence (Desktop + Mobile)",
+      "Full Live Direct Response Sales Page with Clinical Proof & Bundle Offers"
+    ],
     type: "Multi-Step Sales Funnel & CRO Architecture"
+  },
+  {
+    id: "piece-funnel-kalaia",
+    title: "Kalaia 'Detox & Balance' High-Converting Sales Funnel",
+    category: "funnel-cro",
+    brand: "Kalaia Skincare",
+    platform: "ClickFunnels & Clean Beauty DTC",
+    metricHighlight: "Full Funnel Build • Multi-Tier Upsells",
+    description: "Full-length direct response acquisition page and upsell funnel engineered for Kalaia, showcasing active botanicals mechanism breakdown, clinical trust badges, social proof, and bundle offers.",
+    imagePlaceholder: "/portfolio/kalaia-detox-bar-v2.png",
+    galleryImages: [
+      "/portfolio/kalaia-detox-bar-v2.png",
+      "/portfolio/kalaia-sales-page-top.png",
+      "/portfolio/kalaia-screen-mock.png"
+    ],
+    galleryCaptions: [
+      "Full Long-Form Acquisition Sales Funnel for Detox & Balance Bar",
+      "Desktop Landing Page Hero & Offer Presentation",
+      "Multi-Device Funnel Wireframe & Mobile Checkout Architecture"
+    ],
+    type: "Multi-Step Sales Funnel & Upsell Blueprint"
   },
   {
     id: "piece-funnel-petsmont",
@@ -545,31 +812,60 @@ export const PORTFOLIO_PIECES: PortfolioPiece[] = [
     brand: "Petsmont",
     platform: "ClickFunnels & Custom Web",
     metricHighlight: "+40% Opt-In Lift • 11%+ OTO",
-    description: "Full ClickFunnels sales page and multi-tier upsell architecture replacing static Shopify page. Displays 3-screen customer journey mockup alongside the complete full-length sales page with interactive scroll inspection.",
+    description: "Full ClickFunnels sales page, multi-tier upsell architecture, and complete verified analytics report suite. All customer journey wireframes, live funnel steps, and split-test performance dashboards consolidated in one place.",
     imagePlaceholder: "/portfolio/touch-heal-3-screen.png",
-    galleryImages: ["/portfolio/touch-heal-3-screen.png", "/portfolio/petsmont-sales-page.jpg"],
-    type: "Multi-Step Sales Funnel & Upsell Blueprint"
+    galleryImages: [
+      "/portfolio/touch-heal-3-screen.png",
+      "/portfolio/petsmont-sales-page.jpg",
+      "/portfolio/petsmont/received_1454860371647966.jpeg",
+      "/portfolio/petsmont/received_2133455063527944.jpeg",
+      "/portfolio/petsmont/received_1253537781876089.jpeg",
+      "/portfolio/petsmont/received_651337156665694.jpeg"
+    ],
+    galleryCaptions: [
+      "3-Screen Complete Customer Journey Wireframe (Landing → OTO → Thank You)",
+      "Full Live ClickFunnels Sales Page with Ingredient Proof & Testimonials",
+      "A/B Split Test Analytics: 26% → 37.1% Relative Conversion Lift (+40% rel)",
+      "One-Time-Offer (OTO) Checkout Performance: 11%+ Post-Purchase Uptake",
+      "Funnel Step-by-Step Conversion Flow Breakdown",
+      "Variant Comparison & Controlled Traffic Allocation Report"
+    ],
+    type: "Multi-Step Sales Funnel & Analytics Suite"
   },
 
-  // --- ORGANIC & VIRAL SOCIAL WITH STATS ---
+  // ==========================================
+  // 6. ORGANIC & VIRAL SOCIAL ENGINES
+  // ==========================================
   {
     id: "piece-organic-rumi",
     title: "Rumi: Organic Short-Form Growth Engine",
     category: "organic-viral",
     brand: "Rumi",
     platform: "Instagram Reels & TikTok",
-    metricHighlight: "2M+ Views in 30 Days (1k → 11k Followers)",
-    description: "Engineered full video ideation, CapCut editing, niche research, and trial reels strategy. Grew micro-influencer account from 1,000 to 11,000+ organic followers in 30 days with over 2,000,000 views across Reels ($0 ad spend).",
-    imagePlaceholder: "/portfolio/rumi/rumi-2m-views-profile.png",
+    metricHighlight: "2.0M+ Views in 30 Days (1k → 11k Followers)",
+    description: "Engineered full video ideation, CapCut editing, niche competitor research, and trial reels strategy. Grew micro-influencer account from 1,000 to 11,000+ organic followers in 30 days with over 2,000,000 views across Reels ($0 ad spend). Peak reel achieved 821,873 views and generated 5,687 new followers from a single post.",
+    imagePlaceholder: "/portfolio/rumi/rumi-profile-2m-views.png",
     galleryImages: [
-      "/portfolio/rumi/rumi-2m-views-profile.png",
-      "/portfolio/rumi/rumi-259k-views.png",
-      "/portfolio/rumi/rumi-58k-views.png",
-      "/portfolio/rumi/rumi-56k-views.png",
-      "/portfolio/rumi/rumi-43k-views.png",
-      "/portfolio/rumi/rumi-9k-views.png",
-      "/portfolio/rumi/rumi-6k-views.png",
-      "/portfolio/rumi/rumi-3k-views.png"
+      "/portfolio/rumi/rumi-profile-2m-views.png",
+      "/portfolio/rumi/rumi-reel-821k-views.png",
+      "/portfolio/rumi/rumi-reel-458k-views.png",
+      "/portfolio/rumi/rumi-reel-354k-views.png",
+      "/portfolio/rumi/rumi-reel-259k-views-11k-shares.png",
+      "/portfolio/rumi/rumi-reel-58k-views.png",
+      "/portfolio/rumi/rumi-reel-56k-views.png",
+      "/portfolio/rumi/rumi-reel-55k-views.png",
+      "/portfolio/rumi/rumi-reel-43k-views.png"
+    ],
+    galleryCaptions: [
+      "Profile Overview: 2.0M Views in 30 Days • 8,112 Followers • 676K Top Pinned Reel",
+      "Peak Reel #1: 821,873 Views • 675,355 Accounts Reached • 5,687 Follows Gained",
+      "Viral Reel #2: 458,561 Views • 280,014 Accounts Reached • 942 Follows • 1.4K Comments",
+      "Viral Reel #3: 354,851 Views • 276,794 Reach • 3,186 Follows Gained • 1.7K Shares",
+      "Viral Shares Reel #4: 259,387 Views • 11,000 Shares (7.0% Share Rate!) • 2.5K Saves",
+      "Growth Reel #5: 58,048 Views • 42,913 Reached • 568 New Followers",
+      "Trial Reel #6: 56,761 Views • 12,269 Viewers • 133 Follows",
+      "Algorithm Reach #7: 55,658 Views • 33,721 Reached (44.3% Skip / 1.1% Like)",
+      "Repeatable Baseline #8: 43,496 Views • 26,148 Viewers • 345 Follows • 460 Shares"
     ],
     type: "Organic Short-Form Video Growth Engine"
   },
@@ -594,6 +890,19 @@ export const PORTFOLIO_PIECES: PortfolioPiece[] = [
       "/portfolio/facebook-pages/post-engagement-2.2k.png",
       "/portfolio/facebook-pages/post-engagement-2.1k.png",
       "/portfolio/facebook-pages/raptors-kingdom-proof.png"
+    ],
+    galleryCaptions: [
+      "Gloria Quotes: 60k Followers Milestone Proof",
+      "Gloria Quotes Fan Page Profile & Verified Engagement",
+      "NBA Did You Know: High-CTR Trivia & Engagement",
+      "NBA Did You Know 16k Community Proof",
+      "Manny Quotes: Viral Motivational Community",
+      "Manny Quotes 16k Community Growth",
+      "Post Engagement: 3,200 Reactions & Comments",
+      "Post Engagement: 2,900 Organic Interactions",
+      "Post Engagement: 2,200 Organic Interactions",
+      "Post Engagement: 2,100 Organic Interactions",
+      "Raptors Kingdom Fan Page Growth"
     ],
     type: "Organic Audience Scaling & Multi-Page Growth"
   },
@@ -630,7 +939,7 @@ export const TESTIMONIALS: Testimonial[] = [
     rating: 5,
     date: "Verified Video Testimonial",
     metric: "$7,500 in 4 Days • 291x ROAS",
-    videoUrl: "/videos/brandon-taft-testimonial.mp4",
+    videoUrl: "https://r2-origin.submagic.pro/9d1b83c5-cc7b-4486-b35d-d4078e33af08/yWmLgwcoJMSnhGR59Dh85/brandon-taftmp4-download-1793894790753.mp4",
     videoPoster: "/portfolio/video-thumbs/brandon-taft-testimonial-frame.jpg",
     screenshotProof: "/testimonials/testimonial-proof-2.png",
     screenshotTitle: "Brandon Taft Campaign Result Verification Screenshot",
@@ -639,15 +948,15 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     name: "Sheana Lasenby",
     role: "Licensed Realtor & Broker",
-    company: "Lasenby Realty",
+    company: "RE/MAX Sarnia Realty",
     rating: 5,
     date: "Verified Video Testimonial",
-    metric: "34 Qualified Leads • $1.94 / Lead",
+    metric: "60 Leads in 1 Week • 2 Signed Clients",
     videoUrl: "/videos/lasenby-testimonial.mp4",
     videoPoster: "/portfolio/video-thumbs/lasenby-testimonial-frame.jpg",
     screenshotProof: "/testimonials/rb-comment.jpeg",
     screenshotTitle: "Sheana Lasenby Campaign Review Verification Screenshot",
-    text: "Working with Nathan was a fantastic experience. He set up our Facebook ads campaign and generated 34 qualified real estate buyer leads at just $1.94 per lead in Sarnia. His audience targeting, ad strategy, and speed of execution were outstanding."
+    text: "I started a one-week trial using Krumesz Media and was able to generate approximately 60 leads throughout that one-week timeframe. I was able to gain two solid clients from this one-week trial program, plus two additional potential clients connected with a mortgage broker. Having specific leads to follow up on sure beats door knocking."
   },
   {
     name: "Leon Lim",
@@ -672,15 +981,15 @@ export const TESTIMONIALS: Testimonial[] = [
     text: "Nathan is without a doubt a very hardworking individual. I have nothing but praise for him. His unique set of skills is a rare find and his marketing and SEO knowledge is vast. Nathan has a proven track record of being in the upper tier of the extraordinary few that can help a business grow exponentially."
   },
   {
-    name: "Sheila Meloche",
-    role: "Licensed Realtor",
-    company: "Nexstar Real Estate",
+    name: "Henri Liiv",
+    role: "Founder & CEO",
+    company: "Mighti Fungi",
     rating: 5,
     date: "Verified Client Review",
-    metric: "60 Leads • 2 Signed Clients in 1 Wk",
+    metric: "Great Ad Results & Ongoing Retainer",
     screenshotProof: "/testimonials/testimonial-proof-1.png",
-    screenshotTitle: "Sheila Meloche Nexstar Client Review Screenshot",
-    text: "I ran a trial campaign with Nathan and was able to generate approximately 60 leads within that timeframe. I was impressed with his ability to drive client interest—I gained two solid clients from the campaign and two additional prospective buyers connected with the mortgage broker."
+    screenshotTitle: "Henri Liiv (Founder & CEO, Mighti Fungi) Client Review Screenshot",
+    text: "By the way Nathan, your ads are showing some great results."
   },
   {
     name: "Maria",
@@ -688,10 +997,10 @@ export const TESTIMONIALS: Testimonial[] = [
     company: "DTC Brand Client",
     rating: 5,
     date: "Verified Client Review",
-    metric: "Exceptional Creative & Delivery",
+    metric: "Inspiring Funnels & Authenticity",
     screenshotProof: "/testimonials/maria-review.png",
     screenshotTitle: "Maria Written Review & Performance Screenshot",
-    text: "Nathan was exceptional to work with. He handled our campaign strategy, creatives, and optimization with incredible attention to detail and delivered results that exceeded our expectations."
+    text: "Nathan you’re extremely talented, you actually inspired me to continue working on my own funnels. I'm checking out your brilliant Meta (FB) pages... very informative. I love your humor and how authentic you are, thank you!"
   }
 ];
 

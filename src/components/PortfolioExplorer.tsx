@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { PORTFOLIO_PIECES, PortfolioPiece } from '../data/portfolioData';
-import { Eye, X, Play, ChevronLeft, ChevronRight, Image as ImageIcon, ExternalLink, ArrowUpRight } from 'lucide-react';
+import { Eye, X, Play, ChevronLeft, ChevronRight, Image as ImageIcon, ExternalLink, Search, Filter } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
 import { InteractiveMediaViewer } from './InteractiveMediaViewer';
 
 export const PortfolioExplorer: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('all');
+  const [activeBrand, setActiveBrand] = useState<string>('all');
+  const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedPiece, setSelectedPiece] = useState<PortfolioPiece | null>(null);
   const [activeGalleryIndex, setActiveGalleryIndex] = useState<number>(0);
 
   const allCategories = [
     { id: 'all', label: 'All Pieces' },
-    { id: 'video-ads', label: '🎬 Video Ads & VSLs' },
     { id: 'paid-social', label: 'Paid Social Creatives' },
+    { id: 'video-ads', label: '🎬 Video Ads & VSLs' },
     { id: 'funnel-cro', label: 'Funnels & CRO' },
     { id: 'lead-gen', label: 'High-ROI Lead Gen' },
     { id: 'organic-viral', label: 'Organic & Viral' },
@@ -22,15 +24,38 @@ export const PortfolioExplorer: React.FC = () => {
     cat => cat.id === 'all' || PORTFOLIO_PIECES.some(p => p.category === cat.id)
   );
 
-  const filteredPieces = activeCategory === 'all'
-    ? PORTFOLIO_PIECES
-    : PORTFOLIO_PIECES.filter(p => p.category === activeCategory);
+  const brandOptions = [
+    { id: 'all', label: 'All Brands' },
+    { id: 'Mighti Fungi', label: 'Mighti Fungi' },
+    { id: 'Kalaia Skincare', label: 'Kalaia Skincare' },
+    { id: 'Petsmont', label: 'Petsmont' },
+    { id: 'HalalMeals', label: 'HalalMeals' },
+    { id: 'Rumi', label: 'Rumi' },
+    { id: 'Viral Facebook Pages', label: 'Viral FB Pages' },
+    { id: 'Christian', label: 'Faith Media' },
+  ];
 
-  // Close modal on Escape key
+  const filteredPieces = PORTFOLIO_PIECES.filter(p => {
+    const matchesCategory = activeCategory === 'all' || p.category === activeCategory;
+    const matchesBrand = activeBrand === 'all' || p.brand.toLowerCase().includes(activeBrand.toLowerCase());
+    const matchesSearch = !searchQuery.trim() ||
+      p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.platform.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.metricHighlight.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesBrand && matchesSearch;
+  });
+
+  // Close modal on Escape key, navigate on arrow keys
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setSelectedPiece(null);
+      } else if (e.key === 'ArrowRight' && selectedPiece?.galleryImages && selectedPiece.galleryImages.length > 1) {
+        setActiveGalleryIndex(prev => (prev + 1) % selectedPiece.galleryImages!.length);
+      } else if (e.key === 'ArrowLeft' && selectedPiece?.galleryImages && selectedPiece.galleryImages.length > 1) {
+        setActiveGalleryIndex(prev => (prev - 1 + selectedPiece.galleryImages!.length) % selectedPiece.galleryImages!.length);
       }
     };
     if (selectedPiece) {
@@ -67,22 +92,102 @@ export const PortfolioExplorer: React.FC = () => {
           </div>
         </ScrollReveal>
 
-        {/* Filter Pills */}
-        <div className="flex flex-wrap items-center gap-2 mb-10 pb-2 border-b border-black/5">
-          {categories.map(cat => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              className={`px-4 py-2 rounded-full text-xs font-medium transition-all cursor-pointer ${
-                activeCategory === cat.id
-                  ? 'bg-[#0A0A0A] text-white shadow-sm'
-                  : 'bg-[#F7F7F6] text-black/70 hover:bg-[#EFEFEE] hover:text-black'
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
+        {/* Filter Bar: Category Tabs & Search */}
+        <div className="space-y-4 mb-10 pb-4 border-b border-black/5">
+          {/* Primary Category Tabs */}
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="flex flex-wrap items-center gap-2">
+              {categories.map(cat => {
+                const count = cat.id === 'all'
+                  ? PORTFOLIO_PIECES.length
+                  : PORTFOLIO_PIECES.filter(p => p.category === cat.id).length;
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => setActiveCategory(cat.id)}
+                    className={`px-4 py-2 rounded-full text-xs font-medium transition-all cursor-pointer flex items-center gap-1.5 ${
+                      activeCategory === cat.id
+                        ? 'bg-[#0A0A0A] text-white shadow-sm'
+                        : 'bg-[#F7F7F6] text-black/70 hover:bg-[#EFEFEE] hover:text-black'
+                    }`}
+                  >
+                    <span>{cat.label}</span>
+                    <span className={`text-[10px] font-mono px-1.5 py-0.5 rounded-full ${
+                      activeCategory === cat.id ? 'bg-white/20 text-white' : 'bg-black/5 text-black/50'
+                    }`}>
+                      {count}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Quick Search */}
+            <div className="relative w-full sm:w-64">
+              <Search className="w-3.5 h-3.5 text-black/40 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search creatives, ads, metrics..."
+                className="w-full pl-9 pr-7 py-1.5 rounded-full bg-[#F7F7F6] border border-black/10 text-xs text-black placeholder:text-black/40 focus:outline-none focus:border-black/30 transition-all"
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-black/40 hover:text-black text-xs cursor-pointer"
+                >
+                  ✕
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* Quick Brand Filter Chips */}
+          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pt-1">
+            <span className="text-[11px] font-mono uppercase text-black/40 shrink-0 flex items-center gap-1">
+              <Filter className="w-3 h-3" /> Brand:
+            </span>
+            {brandOptions.map(b => {
+              const brandCount = b.id === 'all'
+                ? PORTFOLIO_PIECES.length
+                : PORTFOLIO_PIECES.filter(p => p.brand.toLowerCase().includes(b.id.toLowerCase())).length;
+              return (
+                <button
+                  key={b.id}
+                  onClick={() => setActiveBrand(b.id)}
+                  className={`px-3 py-1 rounded-lg text-[11px] font-mono whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 ${
+                    activeBrand === b.id
+                      ? 'bg-emerald-950 text-emerald-300 font-semibold border border-emerald-500/40 shadow-xs'
+                      : 'bg-[#F7F7F6] text-black/60 hover:text-black hover:bg-black/5 border border-transparent'
+                  }`}
+                >
+                  <span>{b.label}</span>
+                  <span className="text-[9px] opacity-70">({brandCount})</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
+
+        {/* Empty State */}
+        {filteredPieces.length === 0 && (
+          <div className="py-16 text-center bg-[#F7F7F6] rounded-3xl border border-black/5 my-6">
+            <p className="text-sm font-medium text-black/80">No portfolio pieces match your current filters.</p>
+            <p className="text-xs text-black/50 mt-1">Try clearing your search query or selecting "All Brands".</p>
+            <button
+              onClick={() => {
+                setActiveCategory('all');
+                setActiveBrand('all');
+                setSearchQuery('');
+              }}
+              className="mt-4 px-5 py-2 rounded-full bg-black text-white text-xs font-medium hover:bg-black/80 cursor-pointer"
+            >
+              Reset All Filters
+            </button>
+          </div>
+        )}
 
         {/* Pieces Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
@@ -247,24 +352,54 @@ export const PortfolioExplorer: React.FC = () => {
 
             {/* Gallery Thumbnails Strip (if multiple screenshots exist) */}
             {selectedPiece.galleryImages && selectedPiece.galleryImages.length > 1 && (
-              <div className="bg-[#121214] px-4 py-3 flex items-center gap-2.5 overflow-x-auto border-t border-white/10 shrink-0">
-                <span className="text-[10px] font-mono uppercase text-white/50 shrink-0 flex items-center gap-1">
-                  <ImageIcon className="w-3 h-3 text-emerald-400" />
-                  Proof Screenshots ({activeGalleryIndex + 1}/{selectedPiece.galleryImages.length}):
-                </span>
-                {selectedPiece.galleryImages.map((img, gIdx) => (
-                  <button
-                    key={gIdx}
-                    onClick={() => setActiveGalleryIndex(gIdx)}
-                    className={`relative h-12 w-16 rounded-lg overflow-hidden shrink-0 border-2 transition-all cursor-pointer bg-black ${
-                      activeGalleryIndex === gIdx 
-                        ? 'border-emerald-400 scale-105 shadow-md' 
-                        : 'border-white/20 opacity-60 hover:opacity-100'
-                    }`}
-                  >
-                    <img src={img} alt={`Proof ${gIdx + 1}`} className="w-full h-full object-cover" />
-                  </button>
-                ))}
+              <div className="bg-[#121214] px-4 py-3 border-t border-white/10 shrink-0 flex flex-col gap-2">
+                <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-mono uppercase text-white/50 flex items-center gap-1.5">
+                      <ImageIcon className="w-3.5 h-3.5 text-emerald-400" />
+                      Proof Asset ({activeGalleryIndex + 1}/{selectedPiece.galleryImages.length})
+                    </span>
+                    <div className="flex items-center gap-1 ml-1">
+                      <button
+                        type="button"
+                        onClick={() => setActiveGalleryIndex(prev => (prev - 1 + selectedPiece.galleryImages!.length) % selectedPiece.galleryImages!.length)}
+                        className="p-1 rounded bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                        title="Previous Proof (ArrowLeft)"
+                      >
+                        <ChevronLeft className="w-3.5 h-3.5" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setActiveGalleryIndex(prev => (prev + 1) % selectedPiece.galleryImages!.length)}
+                        className="p-1 rounded bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                        title="Next Proof (ArrowRight)"
+                      >
+                        <ChevronRight className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  </div>
+                  {selectedPiece.galleryCaptions && selectedPiece.galleryCaptions[activeGalleryIndex] && (
+                    <span className="text-[11px] font-mono text-emerald-400 font-medium bg-emerald-950/80 px-2.5 py-0.5 rounded-full border border-emerald-500/30 truncate max-w-sm sm:max-w-lg">
+                      {selectedPiece.galleryCaptions[activeGalleryIndex]}
+                    </span>
+                  )}
+                </div>
+                <div className="flex items-center gap-2 overflow-x-auto pb-1">
+                  {selectedPiece.galleryImages.map((img, gIdx) => (
+                    <button
+                      key={gIdx}
+                      onClick={() => setActiveGalleryIndex(gIdx)}
+                      className={`relative h-12 w-16 rounded-lg overflow-hidden shrink-0 border-2 transition-all cursor-pointer bg-black ${
+                        activeGalleryIndex === gIdx 
+                          ? 'border-emerald-400 scale-105 shadow-md ring-1 ring-emerald-400/50' 
+                          : 'border-white/20 opacity-60 hover:opacity-100'
+                      }`}
+                      title={selectedPiece.galleryCaptions ? selectedPiece.galleryCaptions[gIdx] : `Proof ${gIdx + 1}`}
+                    >
+                      <img src={img} alt={`Proof ${gIdx + 1}`} className="w-full h-full object-cover" />
+                    </button>
+                  ))}
+                </div>
               </div>
             )}
 

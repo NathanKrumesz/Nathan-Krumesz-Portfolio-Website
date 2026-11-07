@@ -78,17 +78,17 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume, onOpenContact, onSelec
             <div className="flex items-center gap-3">
               <div className="relative">
                 <img
-                  src="/src/assets/images/nathan-black-hoodie.png"
-                  alt="Nathan Krumesz"
+                  src="/portfolio/henri-liiv.jpg"
+                  alt="Henri Liiv"
                   className="w-11 h-11 rounded-full object-cover border border-white/30"
                 />
                 <span className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-black" />
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between gap-2">
-                  <span className="text-xs font-semibold text-white truncate">Nathan Krumesz</span>
+                  <span className="text-xs font-semibold text-white truncate">Henri Liiv</span>
                   <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-black/40 text-emerald-300 border border-emerald-500/30">
-                    Live Case Study
+                    Founder, Mighti
                   </span>
                 </div>
                 <p className="text-[11px] text-white/70 truncate">

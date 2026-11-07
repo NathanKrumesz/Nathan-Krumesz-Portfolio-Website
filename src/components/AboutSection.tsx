@@ -87,7 +87,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenResume, onOpen
                     rel="noopener noreferrer"
                     className="hover:underline font-mono"
                   >
-                    Spotify: SaaS Growth Secrets
+                    Spotify: {PERSONAL_INFO.spotifyPodcast.showName}
                   </a>
                 </div>
               </div>
@@ -114,14 +114,14 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenResume, onOpen
                     <div className="relative w-14 h-14 rounded-xl overflow-hidden shrink-0 shadow-md border border-white/15 bg-black">
                       <img
                         src="/portfolio/podcast-cover.jpg"
-                        alt="SaaS Growth Secrets Podcast Cover"
+                        alt="The Performance Playbook Podcast Cover"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
 
                     <div className="flex-1 min-w-0">
                       <h4 className="text-sm font-semibold text-white tracking-tight leading-snug group-hover:text-emerald-300 transition-colors truncate">
-                        SaaS Growth Secrets
+                        The Performance Playbook
                       </h4>
                       <p className="text-[11px] text-white/60 mt-0.5 font-light truncate">
                         Hosted by Nathan Krumesz
@@ -129,13 +129,13 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenResume, onOpen
                       <div className="mt-1 flex items-center gap-1 text-[10px] text-emerald-400/90 font-mono">
                         <span className="text-amber-400">★★★★★</span>
                         <span className="text-white/40">•</span>
-                        <span>Funnel Hacking & CRO</span>
+                        <span>Paid Ads & Business Math</span>
                       </div>
                     </div>
                   </div>
 
                   <p className="mt-3 text-[11px] text-white/70 font-light leading-relaxed line-clamp-2">
-                    Actionable marketing nuggets, 5-minute webinar scripts, and direct response strategies for scaling high-growth businesses.
+                    {PERSONAL_INFO.spotifyPodcast.description}
                   </p>
 
                   {/* Listen on Spotify Button */}
