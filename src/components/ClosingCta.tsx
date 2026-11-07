@@ -1,7 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { Copy, Check, Mail, MapPin, Sparkles, Linkedin, Headphones, Calendar } from 'lucide-react';
+import React, { useEffect, useState, useRef } from 'react';
+import { Copy, Check, Mail, MapPin, Sparkles, Linkedin, Headphones, Calendar, ExternalLink } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { ScrollReveal } from './ScrollReveal';
+
+declare global {
+  interface Window {
+    Calendly?: {
+      initInlineWidget: (options: {
+        url: string;
+        parentElement: HTMLElement;
+        prefill?: Record<string, unknown>;
+        utm?: Record<string, unknown>;
+      }) => void;
+    };
+  }
+}
 
 interface ClosingCtaProps {
   onOpenResume: () => void;
@@ -9,21 +22,60 @@ interface ClosingCtaProps {
 
 export const ClosingCta: React.FC<ClosingCtaProps> = ({ onOpenResume }) => {
   const [copied, setCopied] = useState(false);
+  const [widgetLoaded, setWidgetLoaded] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const calendlyUrl = "https://calendly.com/nathan-krumesz/marketing-job-interview";
 
   useEffect(() => {
-    // Ensure Calendly widget script is loaded and initialized
-    const existingScript = document.querySelector('script[src*="calendly.com/assets/external/widget.js"]');
-    if (!existingScript) {
-      const script = document.createElement('script');
+    let isMounted = true;
+
+    const initWidget = () => {
+      const Calendly = window.Calendly;
+      if (Calendly && typeof Calendly.initInlineWidget === 'function' && containerRef.current) {
+        // Prevent duplicate iframes on rerender
+        containerRef.current.innerHTML = '';
+        Calendly.initInlineWidget({
+          url: `${calendlyUrl}?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=10b981`,
+          parentElement: containerRef.current,
+        });
+        if (isMounted) setWidgetLoaded(true);
+        return true;
+      }
+      return false;
+    };
+
+    // Try immediately if script is already cached
+    if (initWidget()) return;
+
+    // Ensure external widget script is attached
+    let script = document.querySelector('script[src*="calendly.com/assets/external/widget.js"]') as HTMLScriptElement | null;
+    if (!script) {
+      script = document.createElement('script');
       script.src = 'https://assets.calendly.com/assets/external/widget.js';
       script.async = true;
       document.body.appendChild(script);
-      script.onload = () => {
-        (window as any).Calendly?.initInlineWidgets?.();
-      };
-    } else {
-      (window as any).Calendly?.initInlineWidgets?.();
     }
+
+    // Poll until window.Calendly is ready
+    let attempts = 0;
+    const interval = setInterval(() => {
+      if (!isMounted) {
+        clearInterval(interval);
+        return;
+      }
+      attempts++;
+      if (initWidget() || attempts > 35) {
+        clearInterval(interval);
+        if (isMounted && attempts > 35) {
+          setWidgetLoaded(true);
+        }
+      }
+    }, 150);
+
+    return () => {
+      isMounted = false;
+      clearInterval(interval);
+    };
   }, []);
 
   const copyEmail = () => {
@@ -94,11 +146,45 @@ export const ClosingCta: React.FC<ClosingCtaProps> = ({ onOpenResume }) => {
 
           {/* Central Glassmorphic Calendar Card with ScrollReveal */}
           <ScrollReveal delay={120} className="mt-10 max-w-3xl mx-auto glass-panel rounded-3xl p-3 sm:p-6 border border-white/25 shadow-2xl text-left backdrop-blur-xl">
+            {/* Direct Booking Utility Header */}
+            <div className="flex items-center justify-between pb-3 px-1 text-xs text-white/80 border-b border-white/10 mb-3">
+              <span className="flex items-center gap-1.5 font-mono text-[11px] text-emerald-300">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                Live Availability · Toronto & Worldwide
+              </span>
+              <a
+                href={calendlyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-[11px] font-mono text-white/70 hover:text-white transition-colors hover:underline"
+              >
+                <span>Direct Link</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
+            </div>
+
             {/* Embedded Calendly inline widget container */}
-            <div className="bg-white rounded-2xl overflow-hidden shadow-xl border border-black/10">
+            <div className="bg-white rounded-2xl overflow-hidden shadow-xl border border-black/10 relative min-h-[700px]">
+              {!widgetLoaded && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 bg-white z-10 text-center">
+                  <div className="w-12 h-12 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center mb-3">
+                    <Calendar className="w-6 h-6 text-emerald-600 animate-pulse" />
+                  </div>
+                  <h4 className="text-sm font-semibold text-gray-900">Loading Nathan's Direct Calendar...</h4>
+                  <p className="text-xs text-gray-500 mt-1 max-w-xs">Connecting to live calendar slots for marketing interviews and strategy consultations.</p>
+                  <a
+                    href={calendlyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#0A0A0A] text-white text-xs font-medium hover:bg-black/80 transition-colors shadow-sm"
+                  >
+                    <span>Click Here to Open Calendar</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              )}
               <div
-                className="calendly-inline-widget"
-                data-url="https://calendly.com/nathan-krumesz/marketing-job-interview"
+                ref={containerRef}
                 style={{ minWidth: '100%', height: '700px', width: '100%' }}
               />
             </div>
