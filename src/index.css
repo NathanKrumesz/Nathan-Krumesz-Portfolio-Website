@@ -153,10 +153,53 @@
   }
 }
 
+/* Hero Desktop Video Stack Floating Keyframes */
+@keyframes hero-float-left {
+  0%, 100% {
+    transform: translateY(0px) rotate(-4deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-3deg);
+  }
+}
+
+@keyframes hero-float-center {
+  0%, 100% {
+    transform: translateY(0px) scale(1.02);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.03);
+  }
+}
+
+@keyframes hero-float-right {
+  0%, 100% {
+    transform: translateY(0px) rotate(4deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(3deg);
+  }
+}
+
+.animate-hero-float-left {
+  animation: hero-float-left 6s ease-in-out infinite;
+}
+
+.animate-hero-float-center {
+  animation: hero-float-center 5.5s ease-in-out infinite 0.4s;
+}
+
+.animate-hero-float-right {
+  animation: hero-float-right 6.2s ease-in-out infinite 0.8s;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero__gradient,
-  .cta__gradient {
-    animation: none;
+  .cta__gradient,
+  .animate-hero-float-left,
+  .animate-hero-float-center,
+  .animate-hero-float-right {
+    animation: none !important;
   }
 }
 
