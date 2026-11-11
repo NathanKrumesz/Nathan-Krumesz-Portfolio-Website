@@ -475,44 +475,10 @@ export const CASE_STUDIES: CaseStudy[] = [
 
 export const PORTFOLIO_PIECES: PortfolioPiece[] = [
   // ==========================================
-  // 1. VIDEO ADS & DIRECT RESPONSE VSLs
+  // TOP 3 MOST IMPRESSIVE PIECES (REQUIRED)
   // ==========================================
-  {
-    id: "piece-vsl-mighti",
-    title: "Mighti 'Level Up' Full Video Sales Letter (VSL)",
-    category: "video-ads",
-    brand: "Mighti Fungi",
-    platform: "ClickFunnels Sales Funnel",
-    metricHighlight: "Doubled AOV $90 → $180 • #1 Brand Ad",
-    description: "Complete direct response Video Sales Letter (VSL) scripted, conceptualized, and produced for Mighti's 'Level Up' nootropic supplement. Outperformed dedicated third-party agency creative.",
-    imagePlaceholder: "/portfolio/video-thumbs/mighti-submagic-poster.jpg",
-    videoUrl: "https://r2-origin.submagic.pro/9d1b83c5-cc7b-4486-b35d-d4078e33af08/x0ygzRZemEeBrEd2LHf69/pw-sales-video-1mov-download-1793033245846.mp4",
-    type: "Full Direct Response Video Sales Letter"
-  },
-  {
-    id: "piece-vid-mighti-person",
-    title: "Mighti 'If Level Up Was A Person' Creative Video Ad",
-    category: "video-ads",
-    brand: "Mighti Fungi",
-    platform: "Meta & TikTok Feeds",
-    metricHighlight: "Viral Persona Angle • High Retention",
-    description: "Creative direct response video ad humanizing the adaptogenic benefits of Level Up. High scroll-stopping hook built to capture top-of-funnel TikTok and Instagram attention.",
-    imagePlaceholder: "/portfolio/video-thumbs/mighti-lvl-up-person-frame.jpg",
-    videoUrl: "/videos/mighti-lvl-up-person.mp4",
-    type: "Short-Form Video Ad"
-  },
-  {
-    id: "piece-vid-mighti-notes",
-    title: "Mighti 'iPhone Notes App Confession' Pattern-Interrupt Video",
-    category: "video-ads",
-    brand: "Mighti Fungi",
-    platform: "Meta Ads & TikTok",
-    metricHighlight: "Native Feed Interrupt • High Hook Rate",
-    description: "Ultra-native UGC pattern-interrupt video styled as an authentic personal iPhone Notes confession, achieving peak 3-second hook retention and eliminating ad fatigue.",
-    imagePlaceholder: "/portfolio/video-thumbs/mighti-iphone-notes-frame.jpg",
-    videoUrl: "/videos/mighti-iphone-notes.mp4",
-    type: "Pattern-Interrupt Video Creative"
-  },
+
+  // #1: KALAIA SALES VIDEO (VSL / SALES REEL)
   {
     id: "piece-vsl-kalaia",
     title: "Kalaia Detox & Balance Social Reel Video Ad",
@@ -525,18 +491,8 @@ export const PORTFOLIO_PIECES: PortfolioPiece[] = [
     videoUrl: "https://r2-origin.submagic.pro/9d1b83c5-cc7b-4486-b35d-d4078e33af08/Vtl12sLoFd81r6f6k547O/kalaia-reelmp4-download-1792178164555.mp4",
     type: "Direct Response Video Reel"
   },
-  {
-    id: "piece-vid-kalaia-demo",
-    title: "Kalaia 'How To Use Detox Bar' Ritual & Demonstration Video",
-    category: "video-ads",
-    brand: "Kalaia Skincare",
-    platform: "TikTok & Meta Reels (9:16)",
-    metricHighlight: "Sensory Product Demo • 9:16 Video",
-    description: "Sensory-rich step-by-step product demonstration video showcasing the luxurious charcoal and clay lather and gentle exfoliating ritual for clearer skin.",
-    imagePlaceholder: "/portfolio/video-thumbs/kalaia-how-to-use-frame.jpg",
-    videoUrl: "/videos/kalaia-how-to-use.mp4",
-    type: "Vertical Product Ritual Demonstration"
-  },
+
+  // #2: PETSMONT SALES VIDEO (VSL / PRESENTATION)
   {
     id: "piece-vsl-petsmont",
     title: "Petsmont 'Touch & Heal' Sales Presentation Video",
@@ -549,160 +505,111 @@ export const PORTFOLIO_PIECES: PortfolioPiece[] = [
     videoUrl: "/videos/petsmont-sales-vsl.mp4",
     type: "Video Sales Presentation & Script"
   },
+
+  // #3: MIGHTY FUNGI SALES VIDEO (VSL)
   {
-    id: "piece-vid-halalmeals",
-    title: "HalalMeals Local Viral Toronto Video Ad",
+    id: "piece-vsl-mighti",
+    title: "Mighti 'Level Up' Full Video Sales Letter (VSL)",
     category: "video-ads",
-    brand: "HalalMeals",
-    platform: "Facebook & Instagram Ads",
-    metricHighlight: "+$20K/Mo in 60 Days • 100k+ Views",
-    description: "Conceptualized and ran a local direct-response video ad across the Greater Toronto Area that went viral organically, scaling fresh meal subscription revenue from $0 to $20,000/month.",
-    imagePlaceholder: "/portfolio/video-thumbs/halal-meals-ad-frame.jpg",
-    videoUrl: "https://r2-origin.submagic.pro/9d1b83c5-cc7b-4486-b35d-d4078e33af08/ManGXXpbifAvSuNj-GydP/halalmeals-video-admp4-download-1793906099288.mp4",
-    type: "Viral Direct Response Video Ad"
-  },
-  {
-    id: "piece-vid-faith-quotes",
-    title: "Viral Motion Quotes Reel: Faith & Direct Response Pacing",
-    category: "video-ads",
-    brand: "Christian Media",
-    platform: "Instagram Reels & YouTube Shorts",
-    metricHighlight: "High Organic Retention & Viral Reach",
-    description: "Direct-response typography and cinematic motion pacing applied to short-form video quotes, maximizing organic reach and algorithm watch time.",
-    imagePlaceholder: "/portfolio/video-thumbs/orthodox-christian-quote-frame.jpg",
-    videoUrl: "/videos/orthodox-christian-quote.mp4",
-    type: "Viral Motion Typography Reel"
+    brand: "Mighti Fungi",
+    platform: "ClickFunnels Sales Funnel",
+    metricHighlight: "Doubled AOV $90 → $180 • #1 Brand Ad",
+    description: "Complete direct response Video Sales Letter (VSL) scripted, conceptualized, and produced for Mighti's 'Level Up' nootropic supplement. Outperformed dedicated third-party agency creative.",
+    imagePlaceholder: "/portfolio/video-thumbs/mighti-submagic-poster.jpg",
+    videoUrl: "https://r2-origin.submagic.pro/9d1b83c5-cc7b-4486-b35d-d4078e33af08/x0ygzRZemEeBrEd2LHf69/pw-sales-video-1mov-download-1793033245846.mp4",
+    type: "Full Direct Response Video Sales Letter"
   },
 
   // ==========================================
-  // 2. PAID SOCIAL CREATIVES: MIGHTI FUNGI
+  // HIGH-IMPACT SCALE, CRO & VIRAL PROOF
   // ==========================================
+
+  // #4: RUMI ORGANIC SHORT-FORM VIRAL GROWTH ENGINE (2.0M+ VIEWS)
   {
-    id: "piece-mighti-brainfog",
-    title: "Mighti 'Clear Brain Fog in 15 Min' Static Ad",
-    category: "paid-social",
-    brand: "Mighti Fungi",
-    platform: "Meta Ads (IG & FB)",
-    metricHighlight: "#1 Best Performing Ad (2x AOV)",
-    description: "Direct-response problem-aware ad visual targeting mental fatigue. The founder confirmed this ad was the single best-performing creative in company history, beating their external agency.",
-    imagePlaceholder: "/portfolio/mighti-brain-fog.png",
-    type: "Direct Response Feed Ad Creative"
-  },
-  {
-    id: "piece-mighti-booster",
-    title: "Mighti 'The #1 Brain Booster of 2024' Authority Ad",
-    category: "paid-social",
-    brand: "Mighti Fungi",
-    platform: "Meta Ads (Feed & Stories)",
-    metricHighlight: "High Authority Hook • Low CPA",
-    description: "High-intent positioning creative contrasting 20 active adaptogens against afternoon caffeine crashes and synthetic energy drinks.",
-    imagePlaceholder: "/portfolio/mighti-brain-booster.png",
-    type: "Authority Positioning Ad"
-  },
-  {
-    id: "piece-mighti-oldnew",
-    title: "Mighti 'Old Me vs New Me' Transformation Creative",
-    category: "paid-social",
-    brand: "Mighti Fungi",
-    platform: "Meta Ads (IG Feed)",
-    metricHighlight: "Comparative A/B Angle • High ROAS",
-    description: "Split-awareness comparative ad visual highlighting the daily productivity difference between an unfocused morning slump vs sharp cognitive flow.",
-    imagePlaceholder: "/portfolio/mighti-old-vs-new.png",
-    type: "Split-Awareness Comparative Ad"
-  },
-  {
-    id: "piece-mighti-texts",
-    title: "Mighti Native iMessage Chat Pattern-Interrupt Ad",
-    category: "paid-social",
-    brand: "Mighti Fungi",
-    platform: "Meta & TikTok Feeds",
-    metricHighlight: "Top Scroll-Stopping Rate",
-    description: "Ultra-native chat format that broke feed blindness with an authentic conversation between 'Your Brain' and 'You' at 2:30 PM.",
-    imagePlaceholder: "/portfolio/mighti-brain-texts.png",
-    type: "Native Pattern-Interrupt Ad"
-  },
-  {
-    id: "piece-mighti-3cat",
-    title: "Mighti '3 Categories of Brain Supplements' Educational Breakdown",
-    category: "paid-social",
-    brand: "Mighti Fungi",
-    platform: "Meta Ads Feed & Carousel",
-    metricHighlight: "Market Education Angle",
-    description: "Visual market categorization positioning adaptogenic mushrooms above generic caffeine pills and crash-inducing synthetic stimulants.",
-    imagePlaceholder: "/portfolio/mighti-3-categories.png",
-    type: "Educational Market Categorization Ad"
-  },
-  {
-    id: "piece-mighti-review",
-    title: "Mighti '1-Star Review of Coffee' Reverse Psychology Ad",
-    category: "paid-social",
-    brand: "Mighti Fungi",
-    platform: "Instagram & Facebook Feeds",
-    metricHighlight: "Reverse Psychology Hook",
-    description: "High-CTR pattern-interrupt creative featuring a verified review detailing the mid-day jitters and crashes caused by conventional energy drinks.",
-    imagePlaceholder: "/portfolio/mighti-one-star-review.png",
-    type: "Reverse Psychology Testimonial Ad"
-  },
-  {
-    id: "piece-mighti-whiteboard",
-    title: "Mighti 'Whiteboard Formula Breakdown' Mechanism Ad",
-    category: "paid-social",
-    brand: "Mighti Fungi",
-    platform: "Meta Ads Feed",
-    metricHighlight: "Mechanism Transparency Hook",
-    description: "Hand-drawn style whiteboard breakdown detailing the science of Lion's Mane, Cordyceps, and Chaga mushroom synergies for sustained ATP energy.",
-    imagePlaceholder: "/portfolio/mighti-whiteboard.png",
-    type: "Formula Mechanism Breakdown"
-  },
-  {
-    id: "piece-mighti-willpower",
-    title: "Mighti 'Willpower vs Biology' Reframe Ad",
-    category: "paid-social",
-    brand: "Mighti Fungi",
-    platform: "Meta Ads",
-    metricHighlight: "Psychological Reframe Angle",
-    description: "Reframing afternoon fatigue as a biological nutrient deficit rather than a willpower failure to unlock direct response purchasing intent.",
-    imagePlaceholder: "/portfolio/mighti-willpower.png",
-    type: "Direct Response Reframe Creative"
-  },
-  {
-    id: "piece-mighti-struggles",
-    title: "Mighti 'Midday Energy Struggles' Problem-Agitation Ad",
-    category: "paid-social",
-    brand: "Mighti Fungi",
-    platform: "Meta Ads",
-    metricHighlight: "Problem-Agitation Hook",
-    description: "Empathetic problem-agitation creative illustrating the 2 PM energy slump that entrepreneurs and professionals face daily.",
-    imagePlaceholder: "/portfolio/mighti-struggles.png",
-    type: "Problem-Agitation Feed Ad"
-  },
-  {
-    id: "piece-mighti-supercharge",
-    title: "Mighti 'Supercharge Your Focus' Benefit Grid",
-    category: "paid-social",
-    brand: "Mighti Fungi",
-    platform: "Meta Ads",
-    metricHighlight: "Feature-Benefit Mapping",
-    description: "Clean benefit mapping illustrating sustained memory, clean alertness, and zero crash from adaptogenic nootropics.",
-    imagePlaceholder: "/portfolio/mighti-supercharge.png",
-    type: "Feature-Benefit Grid Creative"
-  },
-  {
-    id: "piece-mighti-meme",
-    title: "Mighti Native Social Meme Pattern-Interrupt Ad",
-    category: "paid-social",
-    brand: "Mighti Fungi",
-    platform: "Instagram & Twitter/X",
-    metricHighlight: "Native Meme Format • Viral CTR",
-    description: "Culturally native meme-style ad format engineered to blend seamlessly into user feeds while driving cold clicks.",
-    imagePlaceholder: "/portfolio/mighti-meme-ad.jpg",
-    type: "Native Social Meme Format"
+    id: "piece-organic-rumi",
+    title: "Rumi: Organic Short-Form Growth Engine",
+    category: "organic-viral",
+    brand: "Rumi",
+    platform: "Instagram Reels & TikTok",
+    metricHighlight: "2.0M+ Views in 30 Days (1k → 11k Followers)",
+    description: "Engineered full video ideation, CapCut editing, niche competitor research, and trial reels strategy. Grew micro-influencer account from 1,000 to 11,000+ organic followers in 30 days with over 2,000,000 views across Reels ($0 ad spend). Peak reel achieved 821,873 views and generated 5,687 new followers from a single post.",
+    imagePlaceholder: "/portfolio/rumi/rumi-profile-2m-views.png",
+    galleryImages: [
+      "/portfolio/rumi/rumi-profile-2m-views.png",
+      "/portfolio/rumi/rumi-reel-821k-views.png",
+      "/portfolio/rumi/rumi-reel-458k-views.png",
+      "/portfolio/rumi/rumi-reel-354k-views.png",
+      "/portfolio/rumi/rumi-reel-259k-views-11k-shares.png",
+      "/portfolio/rumi/rumi-reel-58k-views.png",
+      "/portfolio/rumi/rumi-reel-56k-views.png",
+      "/portfolio/rumi/rumi-reel-55k-views.png",
+      "/portfolio/rumi/rumi-reel-43k-views.png"
+    ],
+    galleryCaptions: [
+      "Profile Overview: 2.0M Views in 30 Days • 8,112 Followers • 676K Top Pinned Reel",
+      "Peak Reel #1: 821,873 Views • 675,355 Accounts Reached • 5,687 Follows Gained",
+      "Viral Reel #2: 458,561 Views • 280,014 Accounts Reached • 942 Follows • 1.4K Comments",
+      "Viral Reel #3: 354,851 Views • 276,794 Reach • 3,186 Follows Gained • 1.7K Shares",
+      "Viral Shares Reel #4: 259,387 Views • 11,000 Shares (7.0% Share Rate!) • 2.5K Saves",
+      "Growth Reel #5: 58,048 Views • 42,913 Reached • 568 New Followers",
+      "Trial Reel #6: 56,761 Views • 12,269 Viewers • 133 Follows",
+      "Algorithm Reach #7: 55,658 Views • 33,721 Reached (44.3% Skip / 1.1% Like)",
+      "Repeatable Baseline #8: 43,496 Views • 26,148 Viewers • 345 Follows • 460 Shares"
+    ],
+    type: "Organic Short-Form Video Growth Engine"
   },
 
-  // ==========================================
-  // 3. PAID SOCIAL CREATIVES: KALAIA SKINCARE
-  // (Consolidated 9-Creative Suite Card)
-  // ==========================================
+  // #5: PETSMONT LONG-FORM SALES FUNNEL & EMPIRICAL ANALYTICS
+  {
+    id: "piece-funnel-petsmont",
+    title: "Petsmont 'Touch & Heal' Long-Form Sales Funnel",
+    category: "funnel-cro",
+    brand: "Petsmont",
+    platform: "ClickFunnels & Custom Web",
+    metricHighlight: "+40% Opt-In Lift • 11%+ OTO",
+    description: "Full ClickFunnels sales page, multi-tier upsell architecture, and complete verified analytics report suite. All customer journey wireframes, live funnel steps, and split-test performance dashboards consolidated in one place.",
+    imagePlaceholder: "/portfolio/touch-heal-3-screen.png",
+    galleryImages: [
+      "/portfolio/touch-heal-3-screen.png",
+      "/portfolio/petsmont-sales-page.jpg",
+      "/portfolio/petsmont/received_1454860371647966.jpeg",
+      "/portfolio/petsmont/received_2133455063527944.jpeg",
+      "/portfolio/petsmont/received_1253537781876089.jpeg",
+      "/portfolio/petsmont/received_651337156665694.jpeg"
+    ],
+    galleryCaptions: [
+      "3-Screen Complete Customer Journey Wireframe (Landing → OTO → Thank You)",
+      "Full Live ClickFunnels Sales Page with Ingredient Proof & Testimonials",
+      "A/B Split Test Analytics: 26% → 37.1% Relative Conversion Lift (+40% rel)",
+      "One-Time-Offer (OTO) Checkout Performance: 11%+ Post-Purchase Uptake",
+      "Funnel Step-by-Step Conversion Flow Breakdown",
+      "Variant Comparison & Controlled Traffic Allocation Report"
+    ],
+    type: "Multi-Step Sales Funnel & Analytics Suite"
+  },
+
+  // #6: MIGHTI 'LEVEL UP' LONG-FORM DTC SALES FUNNEL
+  {
+    id: "piece-funnel-mighti",
+    title: "Mighti 'Level Up' Long-Form DTC Sales Funnel",
+    category: "funnel-cro",
+    brand: "Mighti Fungi",
+    platform: "ClickFunnels & DTC E-Commerce",
+    metricHighlight: "2x AOV Lift • $180 Peak Cart Value",
+    description: "Complete full-length ClickFunnels sales page and upsell architecture engineered for Mighti's 'Level Up' nootropic supplement. Features direct response avatar copywriting, competitive breakdown, clinical ingredients, customer proof, and one-time offer checkout sequences.",
+    imagePlaceholder: "/portfolio/mighti-funnel-mocks.png",
+    galleryImages: [
+      "/portfolio/mighti-funnel-mocks.png",
+      "/portfolio/mighti-sales-page.jpg"
+    ],
+    galleryCaptions: [
+      "ClickFunnels Multi-Step Wireframe & Upsell Sequence (Desktop + Mobile)",
+      "Full Live Direct Response Sales Page with Clinical Proof & Bundle Offers"
+    ],
+    type: "Multi-Step Sales Funnel & CRO Architecture"
+  },
+
+  // #7: KALAIA DETOX & BALANCE 9-PIECE PAID SOCIAL AD SUITE
   {
     id: "piece-kalaia-ads-suite",
     title: "Kalaia Detox & Balance: 9-Piece Paid Social Creative Suite",
@@ -737,9 +644,71 @@ export const PORTFOLIO_PIECES: PortfolioPiece[] = [
     type: "9-Creative Paid Social Ad Suite"
   },
 
-  // ==========================================
-  // 4. PAID SOCIAL CREATIVES: PETSMONT
-  // ==========================================
+  // #8: KALAIA HIGH-CONVERTING SALES FUNNEL
+  {
+    id: "piece-funnel-kalaia",
+    title: "Kalaia 'Detox & Balance' High-Converting Sales Funnel",
+    category: "funnel-cro",
+    brand: "Kalaia Skincare",
+    platform: "ClickFunnels & Clean Beauty DTC",
+    metricHighlight: "Full Funnel Build • Multi-Tier Upsells",
+    description: "Full-length direct response acquisition page and upsell funnel engineered for Kalaia, showcasing active botanicals mechanism breakdown, clinical trust badges, social proof, and bundle offers.",
+    imagePlaceholder: "/portfolio/kalaia-detox-bar-v2.png",
+    galleryImages: [
+      "/portfolio/kalaia-detox-bar-v2.png",
+      "/portfolio/kalaia-sales-page-top.png",
+      "/portfolio/kalaia-screen-mock.png"
+    ],
+    galleryCaptions: [
+      "Full Long-Form Acquisition Sales Funnel for Detox & Balance Bar",
+      "Desktop Landing Page Hero & Offer Presentation",
+      "Multi-Device Funnel Wireframe & Mobile Checkout Architecture"
+    ],
+    type: "Multi-Step Sales Funnel & Upsell Blueprint"
+  },
+
+  // #9: HALALMEALS LOCAL VIRAL TORONTO VIDEO AD (+$20K/MO)
+  {
+    id: "piece-vid-halalmeals",
+    title: "HalalMeals Local Viral Toronto Video Ad",
+    category: "video-ads",
+    brand: "HalalMeals",
+    platform: "Facebook & Instagram Ads",
+    metricHighlight: "+$20K/Mo in 60 Days • 100k+ Views",
+    description: "Conceptualized and ran a local direct-response video ad across the Greater Toronto Area that went viral organically, scaling fresh meal subscription revenue from $0 to $20,000/month.",
+    imagePlaceholder: "/portfolio/video-thumbs/halal-meals-ad-frame.jpg",
+    videoUrl: "https://r2-origin.submagic.pro/9d1b83c5-cc7b-4486-b35d-d4078e33af08/ManGXXpbifAvSuNj-GydP/halalmeals-video-admp4-download-1793906099288.mp4",
+    type: "Viral Direct Response Video Ad"
+  },
+
+  // #10: MIGHTI 'CLEAR BRAIN FOG IN 15 MIN' (BEAT AGENCY, #1 BRAND AD)
+  {
+    id: "piece-mighti-brainfog",
+    title: "Mighti 'Clear Brain Fog in 15 Min' Static Ad",
+    category: "paid-social",
+    brand: "Mighti Fungi",
+    platform: "Meta Ads (IG & FB)",
+    metricHighlight: "#1 Best Performing Ad (2x AOV)",
+    description: "Direct-response problem-aware ad visual targeting mental fatigue. The founder confirmed this ad was the single best-performing creative in company history, beating their external agency.",
+    imagePlaceholder: "/portfolio/mighti-brain-fog.png",
+    type: "Direct Response Feed Ad Creative"
+  },
+
+  // #11: MIGHTI 'IF LEVEL UP WAS A PERSON' CREATIVE VIDEO AD
+  {
+    id: "piece-vid-mighti-person",
+    title: "Mighti 'If Level Up Was A Person' Creative Video Ad",
+    category: "video-ads",
+    brand: "Mighti Fungi",
+    platform: "Meta & TikTok Feeds",
+    metricHighlight: "Viral Persona Angle • High Retention",
+    description: "Creative direct response video ad humanizing the adaptogenic benefits of Level Up. High scroll-stopping hook built to capture top-of-funnel TikTok and Instagram attention.",
+    imagePlaceholder: "/portfolio/video-thumbs/mighti-lvl-up-person-frame.jpg",
+    videoUrl: "/videos/mighti-lvl-up-person.mp4",
+    type: "Short-Form Video Ad"
+  },
+
+  // #12: PETSMONT CANINE PAW CARE AD CREATIVE SUITE
   {
     id: "piece-petsmont-creatives",
     title: "Petsmont Canine Paw Care: Direct Response Ad Creatives",
@@ -762,113 +731,35 @@ export const PORTFOLIO_PIECES: PortfolioPiece[] = [
     type: "Multi-Angle Paid Social Suite"
   },
 
-  // ==========================================
-  // 5. FUNNELS & CRO ARCHITECTURES
-  // ==========================================
+  // #13: KALAIA 'HOW TO USE DETOX BAR' DEMONSTRATION VIDEO
   {
-    id: "piece-funnel-mighti",
-    title: "Mighti 'Level Up' Long-Form DTC Sales Funnel",
-    category: "funnel-cro",
-    brand: "Mighti Fungi",
-    platform: "ClickFunnels & DTC E-Commerce",
-    metricHighlight: "2x AOV Lift • $180 Peak Cart Value",
-    description: "Complete full-length ClickFunnels sales page and upsell architecture engineered for Mighti's 'Level Up' nootropic supplement. Features direct response avatar copywriting, competitive breakdown, clinical ingredients, customer proof, and one-time offer checkout sequences.",
-    imagePlaceholder: "/portfolio/mighti-funnel-mocks.png",
-    galleryImages: [
-      "/portfolio/mighti-funnel-mocks.png",
-      "/portfolio/mighti-sales-page.jpg"
-    ],
-    galleryCaptions: [
-      "ClickFunnels Multi-Step Wireframe & Upsell Sequence (Desktop + Mobile)",
-      "Full Live Direct Response Sales Page with Clinical Proof & Bundle Offers"
-    ],
-    type: "Multi-Step Sales Funnel & CRO Architecture"
-  },
-  {
-    id: "piece-funnel-kalaia",
-    title: "Kalaia 'Detox & Balance' High-Converting Sales Funnel",
-    category: "funnel-cro",
+    id: "piece-vid-kalaia-demo",
+    title: "Kalaia 'How To Use Detox Bar' Ritual & Demonstration Video",
+    category: "video-ads",
     brand: "Kalaia Skincare",
-    platform: "ClickFunnels & Clean Beauty DTC",
-    metricHighlight: "Full Funnel Build • Multi-Tier Upsells",
-    description: "Full-length direct response acquisition page and upsell funnel engineered for Kalaia, showcasing active botanicals mechanism breakdown, clinical trust badges, social proof, and bundle offers.",
-    imagePlaceholder: "/portfolio/kalaia-detox-bar-v2.png",
-    galleryImages: [
-      "/portfolio/kalaia-detox-bar-v2.png",
-      "/portfolio/kalaia-sales-page-top.png",
-      "/portfolio/kalaia-screen-mock.png"
-    ],
-    galleryCaptions: [
-      "Full Long-Form Acquisition Sales Funnel for Detox & Balance Bar",
-      "Desktop Landing Page Hero & Offer Presentation",
-      "Multi-Device Funnel Wireframe & Mobile Checkout Architecture"
-    ],
-    type: "Multi-Step Sales Funnel & Upsell Blueprint"
-  },
-  {
-    id: "piece-funnel-petsmont",
-    title: "Petsmont 'Touch & Heal' Long-Form Sales Funnel",
-    category: "funnel-cro",
-    brand: "Petsmont",
-    platform: "ClickFunnels & Custom Web",
-    metricHighlight: "+40% Opt-In Lift • 11%+ OTO",
-    description: "Full ClickFunnels sales page, multi-tier upsell architecture, and complete verified analytics report suite. All customer journey wireframes, live funnel steps, and split-test performance dashboards consolidated in one place.",
-    imagePlaceholder: "/portfolio/touch-heal-3-screen.png",
-    galleryImages: [
-      "/portfolio/touch-heal-3-screen.png",
-      "/portfolio/petsmont-sales-page.jpg",
-      "/portfolio/petsmont/received_1454860371647966.jpeg",
-      "/portfolio/petsmont/received_2133455063527944.jpeg",
-      "/portfolio/petsmont/received_1253537781876089.jpeg",
-      "/portfolio/petsmont/received_651337156665694.jpeg"
-    ],
-    galleryCaptions: [
-      "3-Screen Complete Customer Journey Wireframe (Landing → OTO → Thank You)",
-      "Full Live ClickFunnels Sales Page with Ingredient Proof & Testimonials",
-      "A/B Split Test Analytics: 26% → 37.1% Relative Conversion Lift (+40% rel)",
-      "One-Time-Offer (OTO) Checkout Performance: 11%+ Post-Purchase Uptake",
-      "Funnel Step-by-Step Conversion Flow Breakdown",
-      "Variant Comparison & Controlled Traffic Allocation Report"
-    ],
-    type: "Multi-Step Sales Funnel & Analytics Suite"
+    platform: "TikTok & Meta Reels (9:16)",
+    metricHighlight: "Sensory Product Demo • 9:16 Video",
+    description: "Sensory-rich step-by-step product demonstration video showcasing the luxurious charcoal and clay lather and gentle exfoliating ritual for clearer skin.",
+    imagePlaceholder: "/portfolio/video-thumbs/kalaia-how-to-use-frame.jpg",
+    videoUrl: "/videos/kalaia-how-to-use.mp4",
+    type: "Vertical Product Ritual Demonstration"
   },
 
-  // ==========================================
-  // 6. ORGANIC & VIRAL SOCIAL ENGINES
-  // ==========================================
+  // #14: MIGHTI 'IPHONE NOTES APP' PATTERN-INTERRUPT VIDEO
   {
-    id: "piece-organic-rumi",
-    title: "Rumi: Organic Short-Form Growth Engine",
-    category: "organic-viral",
-    brand: "Rumi",
-    platform: "Instagram Reels & TikTok",
-    metricHighlight: "2.0M+ Views in 30 Days (1k → 11k Followers)",
-    description: "Engineered full video ideation, CapCut editing, niche competitor research, and trial reels strategy. Grew micro-influencer account from 1,000 to 11,000+ organic followers in 30 days with over 2,000,000 views across Reels ($0 ad spend). Peak reel achieved 821,873 views and generated 5,687 new followers from a single post.",
-    imagePlaceholder: "/portfolio/rumi/rumi-profile-2m-views.png",
-    galleryImages: [
-      "/portfolio/rumi/rumi-profile-2m-views.png",
-      "/portfolio/rumi/rumi-reel-821k-views.png",
-      "/portfolio/rumi/rumi-reel-458k-views.png",
-      "/portfolio/rumi/rumi-reel-354k-views.png",
-      "/portfolio/rumi/rumi-reel-259k-views-11k-shares.png",
-      "/portfolio/rumi/rumi-reel-58k-views.png",
-      "/portfolio/rumi/rumi-reel-56k-views.png",
-      "/portfolio/rumi/rumi-reel-55k-views.png",
-      "/portfolio/rumi/rumi-reel-43k-views.png"
-    ],
-    galleryCaptions: [
-      "Profile Overview: 2.0M Views in 30 Days • 8,112 Followers • 676K Top Pinned Reel",
-      "Peak Reel #1: 821,873 Views • 675,355 Accounts Reached • 5,687 Follows Gained",
-      "Viral Reel #2: 458,561 Views • 280,014 Accounts Reached • 942 Follows • 1.4K Comments",
-      "Viral Reel #3: 354,851 Views • 276,794 Reach • 3,186 Follows Gained • 1.7K Shares",
-      "Viral Shares Reel #4: 259,387 Views • 11,000 Shares (7.0% Share Rate!) • 2.5K Saves",
-      "Growth Reel #5: 58,048 Views • 42,913 Reached • 568 New Followers",
-      "Trial Reel #6: 56,761 Views • 12,269 Viewers • 133 Follows",
-      "Algorithm Reach #7: 55,658 Views • 33,721 Reached (44.3% Skip / 1.1% Like)",
-      "Repeatable Baseline #8: 43,496 Views • 26,148 Viewers • 345 Follows • 460 Shares"
-    ],
-    type: "Organic Short-Form Video Growth Engine"
+    id: "piece-vid-mighti-notes",
+    title: "Mighti 'iPhone Notes App Confession' Pattern-Interrupt Video",
+    category: "video-ads",
+    brand: "Mighti Fungi",
+    platform: "Meta Ads & TikTok",
+    metricHighlight: "Native Feed Interrupt • High Hook Rate",
+    description: "Ultra-native UGC pattern-interrupt video styled as an authentic personal iPhone Notes confession, achieving peak 3-second hook retention and eliminating ad fatigue.",
+    imagePlaceholder: "/portfolio/video-thumbs/mighti-iphone-notes-frame.jpg",
+    videoUrl: "/videos/mighti-iphone-notes.mp4",
+    type: "Pattern-Interrupt Video Creative"
   },
+
+  // #15: VIRAL FACEBOOK COMMUNITIES (80K+ COMBINED FOLLOWERS)
   {
     id: "piece-organic-facebook-pages",
     title: "Viral Facebook Communities: Multi-Page Organic Growth (80K+ Combined Followers)",
@@ -906,6 +797,152 @@ export const PORTFOLIO_PIECES: PortfolioPiece[] = [
     ],
     type: "Organic Audience Scaling & Multi-Page Growth"
   },
+
+  // #16: MIGHTI 'THE #1 BRAIN BOOSTER OF 2024' AUTHORITY AD
+  {
+    id: "piece-mighti-booster",
+    title: "Mighti 'The #1 Brain Booster of 2024' Authority Ad",
+    category: "paid-social",
+    brand: "Mighti Fungi",
+    platform: "Meta Ads (Feed & Stories)",
+    metricHighlight: "High Authority Hook • Low CPA",
+    description: "High-intent positioning creative contrasting 20 active adaptogens against afternoon caffeine crashes and synthetic energy drinks.",
+    imagePlaceholder: "/portfolio/mighti-brain-booster.png",
+    type: "Authority Positioning Ad"
+  },
+
+  // #17: MIGHTI 'OLD ME VS NEW ME' COMPARATIVE AD
+  {
+    id: "piece-mighti-oldnew",
+    title: "Mighti 'Old Me vs New Me' Transformation Creative",
+    category: "paid-social",
+    brand: "Mighti Fungi",
+    platform: "Meta Ads (IG Feed)",
+    metricHighlight: "Comparative A/B Angle • High ROAS",
+    description: "Split-awareness comparative ad visual highlighting the daily productivity difference between an unfocused morning slump vs sharp cognitive flow.",
+    imagePlaceholder: "/portfolio/mighti-old-vs-new.png",
+    type: "Split-Awareness Comparative Ad"
+  },
+
+  // #18: MIGHTI NATIVE IMESSAGE CHAT AD
+  {
+    id: "piece-mighti-texts",
+    title: "Mighti Native iMessage Chat Pattern-Interrupt Ad",
+    category: "paid-social",
+    brand: "Mighti Fungi",
+    platform: "Meta & TikTok Feeds",
+    metricHighlight: "Top Scroll-Stopping Rate",
+    description: "Ultra-native chat format that broke feed blindness with an authentic conversation between 'Your Brain' and 'You' at 2:30 PM.",
+    imagePlaceholder: "/portfolio/mighti-brain-texts.png",
+    type: "Native Pattern-Interrupt Ad"
+  },
+
+  // #19: MIGHTI 'WHITEBOARD FORMULA BREAKDOWN' MECHANISM AD
+  {
+    id: "piece-mighti-whiteboard",
+    title: "Mighti 'Whiteboard Formula Breakdown' Mechanism Ad",
+    category: "paid-social",
+    brand: "Mighti Fungi",
+    platform: "Meta Ads Feed",
+    metricHighlight: "Mechanism Transparency Hook",
+    description: "Hand-drawn style whiteboard breakdown detailing the science of Lion's Mane, Cordyceps, and Chaga mushroom synergies for sustained ATP energy.",
+    imagePlaceholder: "/portfolio/mighti-whiteboard.png",
+    type: "Formula Mechanism Breakdown"
+  },
+
+  // #20: MIGHTI '3 CATEGORIES OF BRAIN SUPPLEMENTS'
+  {
+    id: "piece-mighti-3cat",
+    title: "Mighti '3 Categories of Brain Supplements' Educational Breakdown",
+    category: "paid-social",
+    brand: "Mighti Fungi",
+    platform: "Meta Ads Feed & Carousel",
+    metricHighlight: "Market Education Angle",
+    description: "Visual market categorization positioning adaptogenic mushrooms above generic caffeine pills and crash-inducing synthetic stimulants.",
+    imagePlaceholder: "/portfolio/mighti-3-categories.png",
+    type: "Educational Market Categorization Ad"
+  },
+
+  // #21: MIGHTI '1-STAR REVIEW OF COFFEE' REVERSE PSYCHOLOGY AD
+  {
+    id: "piece-mighti-review",
+    title: "Mighti '1-Star Review of Coffee' Reverse Psychology Ad",
+    category: "paid-social",
+    brand: "Mighti Fungi",
+    platform: "Instagram & Facebook Feeds",
+    metricHighlight: "Reverse Psychology Hook",
+    description: "High-CTR pattern-interrupt creative featuring a verified review detailing the mid-day jitters and crashes caused by conventional energy drinks.",
+    imagePlaceholder: "/portfolio/mighti-one-star-review.png",
+    type: "Reverse Psychology Testimonial Ad"
+  },
+
+  // #22: VIRAL MOTION QUOTES REEL (FAITH & PACING)
+  {
+    id: "piece-vid-faith-quotes",
+    title: "Viral Motion Quotes Reel: Faith & Direct Response Pacing",
+    category: "video-ads",
+    brand: "Christian Media",
+    platform: "Instagram Reels & YouTube Shorts",
+    metricHighlight: "High Organic Retention & Viral Reach",
+    description: "Direct-response typography and cinematic motion pacing applied to short-form video quotes, maximizing organic reach and algorithm watch time.",
+    imagePlaceholder: "/portfolio/video-thumbs/orthodox-christian-quote-frame.jpg",
+    videoUrl: "/videos/orthodox-christian-quote.mp4",
+    type: "Viral Motion Typography Reel"
+  },
+
+  // #23: MIGHTI 'WILLPOWER VS BIOLOGY' REFRAME AD
+  {
+    id: "piece-mighti-willpower",
+    title: "Mighti 'Willpower vs Biology' Reframe Ad",
+    category: "paid-social",
+    brand: "Mighti Fungi",
+    platform: "Meta Ads",
+    metricHighlight: "Psychological Reframe Angle",
+    description: "Reframing afternoon fatigue as a biological nutrient deficit rather than a willpower failure to unlock direct response purchasing intent.",
+    imagePlaceholder: "/portfolio/mighti-willpower.png",
+    type: "Direct Response Reframe Creative"
+  },
+
+  // #24: MIGHTI 'MIDDAY ENERGY STRUGGLES' PROBLEM-AGITATION AD
+  {
+    id: "piece-mighti-struggles",
+    title: "Mighti 'Midday Energy Struggles' Problem-Agitation Ad",
+    category: "paid-social",
+    brand: "Mighti Fungi",
+    platform: "Meta Ads",
+    metricHighlight: "Problem-Agitation Hook",
+    description: "Empathetic problem-agitation creative illustrating the 2 PM energy slump that entrepreneurs and professionals face daily.",
+    imagePlaceholder: "/portfolio/mighti-struggles.png",
+    type: "Problem-Agitation Feed Ad"
+  },
+
+  // #25: MIGHTI 'SUPERCHARGE YOUR FOCUS' BENEFIT GRID
+  {
+    id: "piece-mighti-supercharge",
+    title: "Mighti 'Supercharge Your Focus' Benefit Grid",
+    category: "paid-social",
+    brand: "Mighti Fungi",
+    platform: "Meta Ads",
+    metricHighlight: "Feature-Benefit Mapping",
+    description: "Clean benefit mapping illustrating sustained memory, clean alertness, and zero crash from adaptogenic nootropics.",
+    imagePlaceholder: "/portfolio/mighti-supercharge.png",
+    type: "Feature-Benefit Grid Creative"
+  },
+
+  // #26: MIGHTI NATIVE SOCIAL MEME AD
+  {
+    id: "piece-mighti-meme",
+    title: "Mighti Native Social Meme Pattern-Interrupt Ad",
+    category: "paid-social",
+    brand: "Mighti Fungi",
+    platform: "Instagram & Twitter/X",
+    metricHighlight: "Native Meme Format • Viral CTR",
+    description: "Culturally native meme-style ad format engineered to blend seamlessly into user feeds while driving cold clicks.",
+    imagePlaceholder: "/portfolio/mighti-meme-ad.jpg",
+    type: "Native Social Meme Format"
+  },
+
+  // #27: CHRISTIAN SOCIAL MEDIA GRAPHICS & YOUTUBE THUMBNAILS
   {
     id: "piece-christian-graphics",
     title: "Christian Social Media Graphics & YouTube Thumbnails",
